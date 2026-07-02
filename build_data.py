@@ -138,6 +138,7 @@ def main():
             "island": island_id,
             "ticker": ticker,
             "listed": is_listed,
+            "description": company.get("description", ""),
             "currency": None,
             "price": None,
             "change_pct": None,
