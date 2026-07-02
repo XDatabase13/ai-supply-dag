@@ -1,0 +1,532 @@
+{
+  "site_name": "生成AIサプライチェーンの有向グラフ",
+  "islands": [
+    {
+      "id": "ai_model",
+      "name": "AIモデル・ファウンデーション",
+      "island_number": 1,
+      "companies": [
+        {
+          "name": "OpenAI",
+          "ticker": null,
+          "market": null,
+          "country": "US",
+          "listed": false,
+          "description": "生成AIの先駆者。「ChatGPT」を開発し、ハイパースケーラーの計算資源を用いて最先端のLLMを供給。"
+        },
+        {
+          "name": "Google / Alphabet",
+          "ticker": "GOOGL",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "検索大手。自社開発のAIモデル「Gemini」やカスタムチップ「TPU」を擁し、強力なAI基盤を提供。"
+        },
+        {
+          "name": "Anthropic",
+          "ticker": null,
+          "market": null,
+          "country": "US",
+          "listed": false,
+          "description": "AIスタートアップ。高度な安全性を掲げるAIモデル「Claude」を開発し、クラウドAPI経由で企業・開発者に供給。"
+        }
+      ]
+    },
+    {
+      "id": "hyperscaler",
+      "name": "ハイパースケーラー",
+      "island_number": 2,
+      "companies": [
+        {
+          "name": "Microsoft",
+          "ticker": "MSFT",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "IT大手。OpenAIと深く提携し、クラウド「Azure」を通じて世界規模のAI計算インフラをモデル企業へ提供。"
+        },
+        {
+          "name": "Amazon",
+          "ticker": "AMZN",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "クラウド（AWS）世界首位。膨大な計算資源と自社開発チップを揃え、AIモデル開発者や企業にインフラを提供。"
+        },
+        {
+          "name": "Oracle",
+          "ticker": "ORCL",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "データベース大手。高速なクラウドインフラ（OCI）を展開し、大規模なGPUクラスターをAIモデル企業に供給。"
+        },
+        {
+          "name": "CoreWeave",
+          "ticker": "CRWV",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "AI特化型クラウド。NVIDIA製GPUを大量に配備した高性能インフラを高速かつ柔軟にAI開発企業へ供給。"
+        },
+        {
+          "name": "Meta",
+          "ticker": "META",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "SNS大手。オープンソースのAIモデル「Llama」を開発しつつ、膨大なGPUからなる巨大なインフラを自社運用。"
+        }
+      ]
+    },
+    {
+      "id": "eda",
+      "name": "半導体設計IP・EDA",
+      "island_number": 3,
+      "companies": [
+        {
+          "name": "Synopsys",
+          "ticker": "SNPS",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "半導体設計支援（EDA）ツール・IPの世界最大手。AI半導体の複雑な回路設計に不可欠なソフトウェアを供給。"
+        },
+        {
+          "name": "Cadence",
+          "ticker": "CDNS",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "EDAおよび設計用IPの大手。AIアクセラレータや高帯域メモリの効率的な設計・検証システムを半導体企業へ供給。"
+        }
+      ]
+    },
+    {
+      "id": "ai_chip",
+      "name": "AI半導体・アクセラレータ",
+      "island_number": 4,
+      "companies": [
+        {
+          "name": "NVIDIA",
+          "ticker": "NVDA",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "AI半導体（GPU）で圧倒的首位。ファブレスとして最先端アクセラレータを開発し、データセンター向けに供給。"
+        },
+        {
+          "name": "Broadcom",
+          "ticker": "AVGO",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "通信・半導体大手。ハイパースケーラー向けにカスタムAIシリコン（ASIC）の開発や高速ネットワーク接続を供給。"
+        },
+        {
+          "name": "AMD",
+          "ticker": "AMD",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "半導体大手。GPU「Instinct」シリーズを展開し、NVIDIAに対抗する高性能AIアクセラレータを市場に供給。"
+        },
+        {
+          "name": "Intel",
+          "ticker": "INTC",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "半導体大手。AI向けCPUやアクセラレータを設計し、自社ファウンドリ（Intel Foundry）で外部企業向けの受託製造も展開。"
+        },
+        {
+          "name": "Marvell",
+          "ticker": "MRVL",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "データインフラ半導体大手。AIデータセンター内部の高速通信用チップや、カスタムASIC設計プラットフォームを供給。"
+        },
+        {
+          "name": "ARM",
+          "ticker": "ARM",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "チップ設計IPの大手。省電力かつ高性能なプロセッサアーキテクチャを、AI半導体を設計する世界中の企業へ供給。"
+        },
+        {
+          "name": "Qualcomm",
+          "ticker": "QCOM",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "通信半導体大手。高い省電力性を誇るAIプロセッサ「Snapdragon」を擁し、エッジAI向けにチップを供給。"
+        }
+      ]
+    },
+    {
+      "id": "manufacturing",
+      "name": "半導体製造・パッケージング",
+      "island_number": 5,
+      "companies": [
+        {
+          "name": "TSMC",
+          "ticker": "TSM",
+          "market": "US",
+          "country": "TW",
+          "listed": true,
+          "description": "ファウンドリ（半導体受託製造）世界首位。最先端プロセスと「CoWoS」などのパッケージング技術でAI半導体を一手に製造。"
+        },
+        {
+          "name": "Amkor",
+          "ticker": "AMKR",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "半導体後工程（OSAT）大手。高度な先端パッケージング技術を持ち、AI半導体やメモリの最終組み立てを担う。"
+        },
+        {
+          "name": "ASE Technology",
+          "ticker": "ASX",
+          "market": "US",
+          "country": "TW",
+          "listed": true,
+          "description": "後工程（OSAT）世界最大手。TSMC等と連携し、HBMを含む最先端AI半導体の2.5D/3Dパッケージングを供給。"
+        }
+      ]
+    },
+    {
+      "id": "memory",
+      "name": "半導体メモリ",
+      "island_number": 6,
+      "companies": [
+        {
+          "name": "SK Hynix",
+          "ticker": "000660.KS",
+          "market": "KR",
+          "country": "KR",
+          "listed": true,
+          "description": "韓国のメモリ大手。AI半導体に不可欠な高帯域メモリ（HBM）で先行し、製造ファウンドリへ優先供給。"
+        },
+        {
+          "name": "Micron",
+          "ticker": "MU",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "米国のメモリ大手。最先端のHBM3Eや高密度DRAM、SSDを開発し、データセンターやAIサーバー向けに供給。"
+        },
+        {
+          "name": "Samsung Electronics",
+          "ticker": "005930.KS",
+          "market": "KR",
+          "country": "KR",
+          "listed": true,
+          "description": "メモリ世界首位。HBMの供給や最先端DRAMの製造に加え、自社でファウンドリ事業と先端パッケージングも垂直統合。"
+        },
+        {
+          "name": "キオクシア",
+          "ticker": "285A.T",
+          "market": "JP",
+          "country": "JP",
+          "listed": true,
+          "description": "NAND型フラッシュメモリ大手。AIの学習データ保存を支える大容量・高性能SSDをインフラ向けに供給。"
+        },
+        {
+          "name": "SanDisk",
+          "ticker": "SNDK",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "フラッシュメモリ専業（WDCから分離独立）。AIデータレイクやエッジデバイス向けの高速ストレージ製品を供給。"
+        }
+      ]
+    },
+    {
+      "id": "equipment",
+      "name": "半導体製造装置・材料",
+      "island_number": 7,
+      "companies": [
+        {
+          "name": "ASML",
+          "ticker": "ASML",
+          "market": "US",
+          "country": "NL",
+          "listed": true,
+          "description": "露光装置世界首位。最先端AI半導体の微細化に不可欠な極端紫外線（EUV）露光装置を独占供給。"
+        },
+        {
+          "name": "Applied Materials",
+          "ticker": "AMAT",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "半導体製造装置で世界最大級。成膜やイオン注入など広範なプロセス装置をロジック・メモリ製造に供給。"
+        },
+        {
+          "name": "Lam Research",
+          "ticker": "LRCX",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "エッチング（微細加工）装置大手。AI半導体やHBMの3次元構造化に必須の精密加工装置を供給。"
+        },
+        {
+          "name": "KLA",
+          "ticker": "KLAC",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "半導体検査・計測装置の世界的リーダー。製造プロセスの歩留まり向上のための欠陥検査システムをファウンドリ等へ供給。"
+        },
+        {
+          "name": "東京エレクトロン",
+          "ticker": "8035.T",
+          "market": "JP",
+          "country": "JP",
+          "listed": true,
+          "description": "半導体製造装置の大手。塗布現像装置やエッチング装置で世界トップクラスのシェアを持つ。"
+        },
+        {
+          "name": "アドバンテスト",
+          "ticker": "6857.T",
+          "market": "JP",
+          "country": "JP",
+          "listed": true,
+          "description": "半導体検査装置（テスタ）世界大手。複雑化するAI半導体や高帯域メモリ（HBM）向けの試験装置で高シェア。"
+        },
+        {
+          "name": "ディスコ",
+          "ticker": "6146.T",
+          "market": "JP",
+          "country": "JP",
+          "listed": true,
+          "description": "半導体切断・研削装置で世界首位。HBMの極薄化やAIチップの切り出しに不可欠な精密加工装置を供給。"
+        },
+        {
+          "name": "レゾナック",
+          "ticker": "4004.T",
+          "market": "JP",
+          "country": "JP",
+          "listed": true,
+          "description": "半導体材料大手。AI半導体の先端パッケージングに必須な高性能封止材や熱制御材料で高い世界シェアを持つ。"
+        },
+        {
+          "name": "イビデン",
+          "ticker": "4062.T",
+          "market": "JP",
+          "country": "JP",
+          "listed": true,
+          "description": "電子部品大手。最先端AI半導体を実装するための高性能プラスチックパッケージ基板（ICパッケージ）を供給。"
+        },
+        {
+          "name": "信越化学",
+          "ticker": "4063.T",
+          "market": "JP",
+          "country": "JP",
+          "listed": true,
+          "description": "半導体シリコンウエハで世界首位。フォトレジストなど前工程に不可欠な高純度材料を製造企業へ広く供給。"
+        },
+        {
+          "name": "HOYA",
+          "ticker": "7741.T",
+          "market": "JP",
+          "country": "JP",
+          "listed": true,
+          "description": "光学技術大手。最先端のEUV露光に対応した回路原版（マスクブランクス）で世界シェアの大部分を握る。"
+        },
+        {
+          "name": "レーザーテック",
+          "ticker": "6920.T",
+          "market": "JP",
+          "country": "JP",
+          "listed": true,
+          "description": "検査装置メーカー。EUV露光用のフォトマスク欠陥検査装置を独占供給し、最先端半導体の歩留まりを支える。"
+        },
+        {
+          "name": "SCREEN HD",
+          "ticker": "7735.T",
+          "market": "JP",
+          "country": "JP",
+          "listed": true,
+          "description": "半導体洗浄装置で世界首位。微細化が進むAI半導体の製造工程において、ウエハの不純物を取り除く装置を供給。"
+        },
+        {
+          "name": "TOWA",
+          "ticker": "6315.T",
+          "market": "JP",
+          "country": "JP",
+          "listed": true,
+          "description": "半導体成形装置大手。HBM（高帯域メモリ）の製造プロセスに不可欠なコンプレッション・モールディング装置で世界首位。"
+        }
+      ]
+    },
+    {
+      "id": "dc_infra",
+      "name": "データセンター物理インフラ",
+      "island_number": 8,
+      "companies": [
+        {
+          "name": "ニデック",
+          "ticker": "6594.T",
+          "market": "JP",
+          "country": "JP",
+          "listed": true,
+          "description": "モーター世界大手。AIデータセンターの熱問題を解決する、高効率な水冷冷却システムやファンをサーバー向けに供給。"
+        },
+        {
+          "name": "富士電機",
+          "ticker": "6504.T",
+          "market": "JP",
+          "country": "JP",
+          "listed": true,
+          "description": "重電大手。AIデータセンターの安定稼働に不可欠な、大容量の不停電電源装置（UPS）や受配電設備を供給。"
+        },
+        {
+          "name": "フジクラ",
+          "ticker": "5803.T",
+          "market": "JP",
+          "country": "JP",
+          "listed": true,
+          "description": "電線・光ファイバー大手。データセンター向け超多芯光ケーブルで世界最高水準の実装密度を実現。"
+        },
+        {
+          "name": "住友電工",
+          "ticker": "5802.T",
+          "market": "JP",
+          "country": "JP",
+          "listed": true,
+          "description": "非鉄金属・電線大手。データセンター内の超高速通信を支える光ファイバーケーブルや光コネクタ、関連部品を供給。"
+        },
+        {
+          "name": "Supermicro",
+          "ticker": "SMCI",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "AIサーバー大手。NVIDIA製GPUを高密度に実装した水冷対応サーバーを、ハイパースケーラー等へ迅速に供給。"
+        },
+        {
+          "name": "Dell",
+          "ticker": "DELL",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "ITインフラ大手。企業やハイパースケーラー向けに、最新のAI半導体を搭載した高性能サーバーやストレージシステムを供給。"
+        },
+        {
+          "name": "Corning",
+          "ticker": "GLW",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "特殊ガラス大手。AIデータセンター内部の膨大なデータ通信を処理する、超高密度光ファイバーや接続ソリューションを供給。"
+        },
+        {
+          "name": "Vertiv",
+          "ticker": "VRT",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "物理インフラ大手。AIサーバーの排熱を管理する液冷・空冷システムや、データセンター用の電力管理ソリューションを供給。"
+        },
+        {
+          "name": "Astera Labs",
+          "ticker": "ALAB",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "接続半導体メーカー。AIサーバー内のGPUとメモリ、ネットワーク間のデータ転送ボトルネックを解消するICを供給。"
+        },
+        {
+          "name": "Arista Networks",
+          "ticker": "ANET",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "ネットワーク機器大手。AIクラスター内の膨大な通信を低遅延で処理する高速イーサネットスイッチを供給。"
+        },
+        {
+          "name": "Western Digital",
+          "ticker": "WDC",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "ストレージ大手。AIの学習・推論に用いる大量のデータを保管する、DC向けの大容量ニアラインHDDを供給。"
+        }
+      ]
+    },
+    {
+      "id": "physical_ai",
+      "name": "フィジカルAI・エッジ",
+      "island_number": 9,
+      "companies": [
+        {
+          "name": "ソフトバンクG",
+          "ticker": "9984.T",
+          "market": "JP",
+          "country": "JP",
+          "listed": true,
+          "description": "投資会社・通信キャリア。傘下にArm（チップ設計IP）を持ち、AI分野ではStargateプロジェクトを主導。"
+        },
+        {
+          "name": "Apple",
+          "ticker": "AAPL",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "スマホ・IT大手。独自AI「Apple Intelligence」を展開し、高性能な自社製SoCを搭載したエッジ端末を通じてAIを普及。"
+        },
+        {
+          "name": "NTT",
+          "ticker": "9432.T",
+          "market": "JP",
+          "country": "JP",
+          "listed": true,
+          "description": "通信最大手。超低消費電力・低遅延の光ネットワーク技術「IOWN」を推進し、分散型AIデータセンター基盤を構築。"
+        },
+        {
+          "name": "トヨタ",
+          "ticker": "7203.T",
+          "market": "JP",
+          "country": "JP",
+          "listed": true,
+          "description": "自動車世界大手。自動運転技術やモビリティ分野において、完成された生成AIモデルをフィジカルな車両に実装・統合。"
+        },
+        {
+          "name": "ソニー",
+          "ticker": "6758.T",
+          "market": "JP",
+          "country": "JP",
+          "listed": true,
+          "description": "エンタメ・半導体大手。世界首位のイメージセンサーにAI処理機能を組み込み、高度なエッジAIソリューションを展開。"
+        },
+        {
+          "name": "Tesla",
+          "ticker": "TSLA",
+          "market": "US",
+          "country": "US",
+          "listed": true,
+          "description": "EV・AI企業。自動運転チップを自社設計し、大規模計算インフラを運用。人型ロボット「Optimus」などフィジカルAIを主導。"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {"from": "eda", "to": "ai_chip", "label": "設計ツール・IPを供給"},
+    {"from": "manufacturing", "to": "ai_chip", "label": "完成チップをファブレスに供給"},
+    {"from": "equipment", "to": "manufacturing", "label": "装置・材料を供給"},
+    {"from": "memory", "to": "manufacturing", "label": "HBMをパッケージング統合"},
+    {"from": "ai_chip", "to": "dc_infra", "label": "AIアクセラレータを供給"},
+    {"from": "memory", "to": "dc_infra", "label": "メモリをサーバーに供給"},
+    {"from": "dc_infra", "to": "hyperscaler", "label": "物理インフラを提供"},
+    {"from": "hyperscaler", "to": "ai_model", "label": "計算資源を提供"},
+    {"from": "ai_model", "to": "physical_ai", "label": "AIモデル・APIを提供"},
+    {"from": "equipment", "to": "memory", "label": "装置・材料を供給"}
+  ],
+  "crossover_companies": [
+    {"name": "Intel", "home": "ai_chip", "also": ["manufacturing"]},
+    {"name": "Samsung Electronics", "home": "memory", "also": ["manufacturing"]}
+  ]
+}

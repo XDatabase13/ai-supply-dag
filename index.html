@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>生成AIサプライチェーンの有向グラフ | 数理投資情報部</title>
+<meta name="description" content="生成AI三大プレイヤー（OpenAI / Google / Anthropic）を中核に、半導体・製造装置・材料・データセンター・フィジカルAIまで、グローバル56社のAIサプライチェーンを有向グラフで可視化。毎朝更新。" />
+<link rel="canonical" href="https://xdbdb.com/ai-supply-dag/" />
+<style>
+  :root{
+    --sea-0:#05080f;
+    --sea-1:#0a1322;
+    --sea-2:#0f1d33;
+    --ink:#e7eef7;
+    --ink-dim:#8aa0bd;
+    --ink-faint:#52647e;
+    --line:#1d3350;
+    --line-soft:#172A44;
+    --up:#27d39a;
+    --down:#ff6b6b;
+    --flat:#6c819c;
+    --bridge:#3a567f;
+    --bridge-hot:#6fa8ff;
+    --accent:#6fa8ff;
+    --mono:'SFMono-Regular',Menlo,Consolas,'Liberation Mono',monospace;
+    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI','Hiragino Kaku Gothic ProN','Noto Sans JP',Meiryo,sans-serif;
+    --hdr:240px;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;min-height:100%}
+  body{
+    background:
+      radial-gradient(1200px 800px at 70% -10%, #0c1830 0%, rgba(12,24,48,0) 60%),
+      radial-gradient(900px 700px at 10% 110%, #0b1b2e 0%, rgba(11,27,46,0) 55%),
+      var(--sea-0);
+    color:var(--ink);font-family:var(--sans);
+  }
+  .nav-container{max-width:960px;margin:0 auto;padding:10px 22px;border-bottom:1px solid var(--line-soft)}
+  .nav-container a{color:var(--ink-dim);text-decoration:none;font-size:14px;font-family:var(--mono)}
+  .nav-container a:hover{color:var(--ink)}
+  .page-header{max-width:960px;margin:0 auto;padding:28px 22px 22px;border-bottom:1px solid var(--line-soft)}
+  .ph-kicker{font-family:var(--mono);font-size:.68rem;letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .ph-h1{font-size:clamp(1.4rem,4vw,2rem);font-weight:700;letter-spacing:-.01em;line-height:1.2}
+  .ph-h1 .man{color:var(--accent)}
+  .ph-h1 .ph-badge{font-family:var(--mono);color:var(--ink-dim);font-weight:400;font-size:.65em;margin-left:10px}
+  .site-nav{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:14px}
+  .site-nav-label{font-size:.78rem;color:var(--ink-faint);margin-right:4px}
+  .site-nav a{font-size:.78rem;font-weight:700;color:#0a0e14;background:#d4a548;
+    border:1px solid #d4a548;border-radius:6px;padding:5px 14px;text-decoration:none}
+  .site-nav a:hover{opacity:.85}
+  #ai-lead{max-width:960px;margin:0 auto;padding:20px 22px}
+  .lead-text{padding:14px 18px;background:var(--sea-2);border:1px solid var(--line);border-radius:10px;font-size:.88rem;color:var(--ink-dim);line-height:1.85}
+  .ph-meta{display:flex;flex-wrap:wrap;gap:6px 20px;margin-top:14px;
+    font-family:var(--mono);font-size:.72rem;color:var(--ink-faint)}
+  .ph-meta b{color:var(--ink-dim);font-weight:500}
+
+  #stage{position:relative;width:100vw;height:calc(100vh - var(--hdr));min-height:480px}
+  svg{width:100%;height:100%;display:block;cursor:default}
+  .crumbs{position:absolute;
+    top:14px;
+    right:max(18px, calc((100vw - (100vh - var(--hdr)) * 1.6) / 2 + 18px));
+    z-index:20;font-size:11.5px;color:var(--ink-faint);font-family:var(--mono);pointer-events:none}
+  .crumbs b{color:var(--ink-dim);font-weight:500}
+  .hud{
+    position:absolute;
+    left:max(18px, calc((100vw - (100vh - var(--hdr)) * 1.6) / 2 + 18px));
+    bottom:20px;z-index:20;
+    display:flex;flex-direction:column;gap:8px;font-size:11px;color:var(--ink-dim);
+  }
+  .legend{display:flex;gap:14px;align-items:center;
+    background:rgba(10,19,34,.72);border:1px solid var(--line-soft);
+    border-radius:8px;padding:7px 11px;backdrop-filter:blur(4px)}
+  .legend .it{display:flex;gap:6px;align-items:center;white-space:nowrap}
+  .dot{width:9px;height:9px;border-radius:50%}
+  .swatch{width:14px;height:3px;border-radius:2px}
+  .backbtn{
+    align-self:flex-start;pointer-events:auto;cursor:pointer;
+    display:none;gap:7px;align-items:center;
+    background:rgba(10,19,34,.82);border:1px solid var(--line-soft);
+    color:var(--ink);border-radius:8px;padding:8px 13px;font-size:12px;
+  }
+  .backbtn:hover{border-color:var(--bridge-hot);color:#fff}
+  .backbtn .ar{font-family:var(--mono);color:var(--accent)}
+  .tip{
+    position:absolute;z-index:30;pointer-events:none;opacity:0;transform:translateY(4px);
+    transition:opacity .12s, transform .12s;
+    background:rgba(8,15,28,.96);border:1px solid var(--line-soft);
+    border-radius:9px;padding:9px 11px;min-width:150px;backdrop-filter:blur(6px);
+    box-shadow:0 8px 30px rgba(0,0,0,.5);
+  }
+  .tip.on{opacity:1;transform:translateY(0)}
+  .tip .nm{font-size:13px;font-weight:600;margin-bottom:1px}
+  .tip .cd{font-family:var(--mono);font-size:10.5px;color:var(--ink-faint)}
+  .tip .pr{display:flex;justify-content:space-between;gap:14px;margin-top:6px;font-family:var(--mono);font-size:12px}
+  .tip .chg{font-weight:600}
+  .tip .also{margin-top:7px;padding-top:7px;border-top:1px solid var(--line-soft);
+    font-size:10.5px;color:var(--ink-dim);line-height:1.5}
+  .tip .also b{color:var(--bridge-hot);font-weight:500}
+  text{user-select:none}
+  .island-label{font-size:13px;font-weight:600;letter-spacing:.04em;fill:var(--ink)}
+  .island-sub{font-size:10px;fill:var(--ink-faint);font-family:var(--mono);letter-spacing:.05em}
+  .node-label{font-size:10.5px;fill:var(--ink-dim);font-family:var(--sans)}
+  .hint{position:absolute;left:50%;bottom:54px;transform:translateX(-50%);z-index:15;
+    font-size:11px;color:var(--ink-faint);letter-spacing:.04em;pointer-events:none;
+    transition:opacity .4s}
+  .scroll-cue{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:15;
+    font-size:11px;color:var(--ink-faint);letter-spacing:.05em;pointer-events:none}
+  #list{max-width:960px;margin:0 auto;padding:30px 22px 80px}
+  #list .lead{font-size:12.5px;color:var(--ink-dim);line-height:1.8;margin:0 0 26px;
+    border-left:2px solid var(--line-soft);padding-left:14px}
+  .sec{margin:0 0 30px}
+  .sec-h{display:flex;align-items:baseline;gap:10px;
+    border-bottom:1px solid var(--line-soft);padding-bottom:7px;margin-bottom:4px}
+  .sec-h h2{font-size:15px;font-weight:600;margin:0;color:var(--ink)}
+  .sec-h .en{font-family:var(--mono);font-size:10.5px;color:var(--ink-faint);letter-spacing:.06em}
+  .sec-h .cnt{margin-left:auto;font-size:11px;color:var(--ink-faint)}
+  .row{display:grid;grid-template-columns:80px minmax(130px,1.2fr) 96px 78px 1fr;
+    gap:12px;align-items:baseline;padding:9px 4px;border-bottom:1px solid rgba(23,42,68,.5);
+    font-size:12.5px}
+  .row .cd{font-family:var(--mono);font-size:11.5px;color:var(--ink-faint)}
+  .row .nm{color:var(--ink);font-weight:500}
+  .row .unl{font-size:10px;color:var(--ink-faint);margin-left:6px}
+  .row .also-tag{font-size:10px;color:var(--bridge-hot);margin-left:6px;font-weight:400}
+  .row .pr{font-family:var(--mono);text-align:right;color:var(--ink-dim)}
+  .row .chg{font-family:var(--mono);text-align:right;font-weight:600}
+  .row .ds{color:var(--ink-dim);line-height:1.6;font-size:12px}
+  @media(max-width:680px){
+    .row{grid-template-columns:64px 1fr 84px;row-gap:3px}
+    .row .chg{grid-column:3}
+    .row .ds{grid-column:1/-1;color:var(--ink-faint)}
+  }
+  footer.disclaimer{
+    max-width:960px;margin:0 auto;padding:20px 22px 40px;
+    font-size:11px;color:var(--ink-faint);line-height:1.7;
+    border-top:1px solid var(--line-soft);
+  }
+  #list .lead ul{margin:4px 0 8px;padding-left:1.4em}
+  #list .lead li{margin-bottom:3px}
+  #list .lead-h{font-weight:600;color:var(--ink);font-size:12.5px;margin:0 0 8px}
+  #list .lead p{margin:0}
+  .seo-section{max-width:960px;margin:44px auto 0;padding:28px 22px 0;border-top:1px solid var(--line)}
+  .seo-section h2{font-size:.95rem;font-weight:700;color:var(--ink);margin:26px 0 6px;padding-bottom:4px;border-bottom:1px solid var(--line-soft)}
+  .seo-section h2:first-of-type{margin-top:0}
+  .seo-section p{font-size:.84rem;color:var(--ink-dim);line-height:1.9}
+  .seo-section p+p{margin-top:8px}
+</style>
+</head>
+<body>
+
+<div class="nav-container">
+  <a href="https://xdbdb.com/">&larr; 数理投資情報部 トップ</a>
+</div>
+
+<header class="page-header" id="page-header">
+  <div class="ph-kicker">AI Supply Chain / DAG</div>
+  <h1 class="ph-h1">生成AIサプライチェーンの<span class="man">有向グラフ</span><span class="ph-badge">グローバル56社</span></h1>
+  <nav class="site-nav">
+    <span class="site-nav-label">数理投資情報部の他の分析 ▶</span>
+    <a href="https://xdbdb.com/sbg-nav/">SBG 理論株価モニター</a>
+    <a href="https://xdbdb.com/crypto-nav/">暗号通貨トレジャリー企業 mNAVモニター</a>
+    <a href="https://xdbdb.com/kioxia-sandisk/">キオクシア×サンディスク PER</a>
+    <a href="https://xdbdb.com/momentum-corr/">モメンタム相関係数</a>
+    <a href="https://xdbdb.com/ai-manifold/">AI関連銘柄の多様体</a>
+    <a href="https://xdbdb.com/">トップ</a>
+  </nav>
+  <div class="ph-meta">
+    <span><b>生成：</b><span id="ph-generated">—</span></span>
+    <span><b>基準：</b>各市場クローズ後（毎朝更新）</span>
+  </div>
+</header>
+
+<div id="ai-lead">
+  <div class="lead-text">生成AI三大プレイヤー（OpenAI / Google / Anthropic）を中核とし、その基盤を構築する上流（半導体設計・製造・装置・材料・インフラ）から、AIを実社会へ実装する下流（エッジ・フィジカルAI）までのバリューチェーンを9つの島・56社のネットワークで可視化。日本語サイトの特性上、関連する国内企業を厚めに選定しています。</div>
+</div>
+
+<div id="stage">
+  <span class="crumbs" id="crumbs"><b>大域ビュー</b> ／ 9島 56社（54上場）</span>
+
+  <svg id="map" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid meet"></svg>
+
+  <div class="hint" id="hint">島をクリックすると内部構造が開きます</div>
+
+  <div class="hud">
+    <div class="backbtn" id="back"><span class="ar">←</span> 大域ビューへ戻る</div>
+    <div class="legend">
+      <span class="it"><span class="dot" style="background:var(--up)"></span>前日比 +</span>
+      <span class="it"><span class="dot" style="background:var(--down)"></span>−</span>
+      <span class="it"><span class="dot" style="background:var(--flat)"></span>非上場</span>
+      <span class="it"><span class="swatch" style="background:var(--bridge)"></span>供給エッジ</span>
+    </div>
+  </div>
+
+  <div class="tip" id="tip"></div>
+  <div class="scroll-cue">↓ 銘柄一覧（セクター別）</div>
+</div>
+
+<section id="list">
+<!--STOCK_LIST_START-->
+<div class="lead"><p class="lead-h">地図の読み方</p><ul><li><b>島（円）</b> … AIサプライチェーン上の9つのセクター。</li><li><b>ノード（点）</b> … 個別銘柄。大きさは時価総額（対数スケール）、色は前日比（緑＝上昇、赤＝下落）。非上場はグレー固定。</li><li><b>矢印</b> … セクター間の供給の流れ（商流ベース）。</li><li><b>橙色の縁取り</b> … 複数の島にまたがる銘柄（Intel・Samsung Electronics）。</li></ul></div>
+<div class="sec"><div class="sec-h"><h2>AIモデル・ファウンデーション</h2><span class="en">AI MODEL</span><span class="cnt">3社</span></div>
+<div class="row"><span class="cd">—</span><span class="nm">OpenAI<span class="unl">非上場</span></span><span class="pr">—</span><span class="chg">—</span><span class="ds"></span></div>
+<div class="row"><span class="cd">GOOGL</span><span class="nm">Google / Alphabet</span><span class="pr" data-col="pr" data-key="GOOGL">$361.21</span><span class="chg" data-col="chg" data-key="GOOGL" style="color:var(--up)">▲1.07%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">—</span><span class="nm">Anthropic<span class="unl">非上場</span></span><span class="pr">—</span><span class="chg">—</span><span class="ds"></span></div>
+</div>
+<div class="sec"><div class="sec-h"><h2>ハイパースケーラー</h2><span class="en">HYPERSCALER</span><span class="cnt">5社</span></div>
+<div class="row"><span class="cd">MSFT</span><span class="nm">Microsoft</span><span class="pr" data-col="pr" data-key="MSFT">$384.28</span><span class="chg" data-col="chg" data-key="MSFT" style="color:var(--up)">▲3.02%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">AMZN</span><span class="nm">Amazon</span><span class="pr" data-col="pr" data-key="AMZN">$241.70</span><span class="chg" data-col="chg" data-key="AMZN" style="color:var(--up)">▲1.41%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">ORCL</span><span class="nm">Oracle</span><span class="pr" data-col="pr" data-key="ORCL">$142.50</span><span class="chg" data-col="chg" data-key="ORCL" style="color:var(--down)">▼2.76%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">CRWV</span><span class="nm">CoreWeave</span><span class="pr" data-col="pr" data-key="CRWV">$85.69</span><span class="chg" data-col="chg" data-key="CRWV" style="color:var(--down)">▼13.92%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">META</span><span class="nm">Meta</span><span class="pr" data-col="pr" data-key="META">$612.91</span><span class="chg" data-col="chg" data-key="META" style="color:var(--up)">▲8.81%</span><span class="ds"></span></div>
+</div>
+<div class="sec"><div class="sec-h"><h2>半導体設計IP・EDA</h2><span class="en">EDA / IP</span><span class="cnt">2社</span></div>
+<div class="row"><span class="cd">SNPS</span><span class="nm">Synopsys</span><span class="pr" data-col="pr" data-key="SNPS">$454.53</span><span class="chg" data-col="chg" data-key="SNPS" style="color:var(--up)">▲1.90%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">CDNS</span><span class="nm">Cadence</span><span class="pr" data-col="pr" data-key="CDNS">$377.73</span><span class="chg" data-col="chg" data-key="CDNS" style="color:var(--up)">▲0.64%</span><span class="ds"></span></div>
+</div>
+<div class="sec"><div class="sec-h"><h2>AI半導体・アクセラレータ</h2><span class="en">AI CHIP</span><span class="cnt">7社</span></div>
+<div class="row"><span class="cd">NVDA</span><span class="nm">NVIDIA</span><span class="pr" data-col="pr" data-key="NVDA">$197.58</span><span class="chg" data-col="chg" data-key="NVDA" style="color:var(--down)">▼1.25%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">AVGO</span><span class="nm">Broadcom</span><span class="pr" data-col="pr" data-key="AVGO">$369.34</span><span class="chg" data-col="chg" data-key="AVGO" style="color:var(--down)">▼2.23%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">AMD</span><span class="nm">AMD</span><span class="pr" data-col="pr" data-key="AMD">$540.88</span><span class="chg" data-col="chg" data-key="AMD" style="color:var(--down)">▼6.89%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">INTC</span><span class="nm">Intel <span class="also-tag">※半導体製造・パッケージングにも関連</span></span><span class="pr" data-col="pr" data-key="INTC">$127.02</span><span class="chg" data-col="chg" data-key="INTC" style="color:var(--down)">▼9.03%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">MRVL</span><span class="nm">Marvell</span><span class="pr" data-col="pr" data-key="MRVL">$272.05</span><span class="chg" data-col="chg" data-key="MRVL" style="color:var(--down)">▼8.67%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">ARM</span><span class="nm">ARM</span><span class="pr" data-col="pr" data-key="ARM">$337.47</span><span class="chg" data-col="chg" data-key="ARM" style="color:var(--down)">▼4.82%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">QCOM</span><span class="nm">Qualcomm</span><span class="pr" data-col="pr" data-key="QCOM">$181.92</span><span class="chg" data-col="chg" data-key="QCOM" style="color:var(--down)">▼1.55%</span><span class="ds"></span></div>
+</div>
+<div class="sec"><div class="sec-h"><h2>半導体製造・パッケージング</h2><span class="en">FOUNDRY</span><span class="cnt">3社</span></div>
+<div class="row"><span class="cd">TSM</span><span class="nm">TSMC</span><span class="pr" data-col="pr" data-key="TSM">$444.23</span><span class="chg" data-col="chg" data-key="TSM" style="color:var(--down)">▼6.98%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">AMKR</span><span class="nm">Amkor</span><span class="pr" data-col="pr" data-key="AMKR">$79.99</span><span class="chg" data-col="chg" data-key="AMKR" style="color:var(--down)">▼7.24%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">ASX</span><span class="nm">ASE Technology</span><span class="pr" data-col="pr" data-key="ASX">$42.99</span><span class="chg" data-col="chg" data-key="ASX" style="color:var(--down)">▼4.72%</span><span class="ds"></span></div>
+</div>
+<div class="sec"><div class="sec-h"><h2>半導体メモリ</h2><span class="en">MEMORY</span><span class="cnt">5社</span></div>
+<div class="row"><span class="cd">000660.KS</span><span class="nm">SK Hynix</span><span class="pr" data-col="pr" data-key="000660.KS">₩2,187,000</span><span class="chg" data-col="chg" data-key="000660.KS" style="color:var(--down)">▼14.57%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">MU</span><span class="nm">Micron</span><span class="pr" data-col="pr" data-key="MU">$1032.28</span><span class="chg" data-col="chg" data-key="MU" style="color:var(--down)">▼10.57%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">005930.KS</span><span class="nm">Samsung Electronics <span class="also-tag">※半導体製造・パッケージングにも関連</span></span><span class="pr" data-col="pr" data-key="005930.KS">₩286,000</span><span class="chg" data-col="chg" data-key="005930.KS" style="color:var(--down)">▼9.06%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">285A.T</span><span class="nm">キオクシア</span><span class="pr" data-col="pr" data-key="285A.T">¥76,260</span><span class="chg" data-col="chg" data-key="285A.T" style="color:var(--down)">▼13.47%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">SNDK</span><span class="nm">SanDisk</span><span class="pr" data-col="pr" data-key="SNDK">$2032.22</span><span class="chg" data-col="chg" data-key="SNDK" style="color:var(--down)">▼10.62%</span><span class="ds"></span></div>
+</div>
+<div class="sec"><div class="sec-h"><h2>半導体製造装置・材料</h2><span class="en">SPE / MATERIALS</span><span class="cnt">14社</span></div>
+<div class="row"><span class="cd">ASML</span><span class="nm">ASML</span><span class="pr" data-col="pr" data-key="ASML">$1843.04</span><span class="chg" data-col="chg" data-key="ASML" style="color:var(--down)">▼7.36%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">AMAT</span><span class="nm">Applied Materials</span><span class="pr" data-col="pr" data-key="AMAT">$650.91</span><span class="chg" data-col="chg" data-key="AMAT" style="color:var(--down)">▼9.97%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">LRCX</span><span class="nm">Lam Research</span><span class="pr" data-col="pr" data-key="LRCX">$391.26</span><span class="chg" data-col="chg" data-key="LRCX" style="color:var(--down)">▼9.71%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">KLAC</span><span class="nm">KLA</span><span class="pr" data-col="pr" data-key="KLAC">$266.19</span><span class="chg" data-col="chg" data-key="KLAC" style="color:var(--down)">▼11.77%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">8035.T</span><span class="nm">東京エレクトロン</span><span class="pr" data-col="pr" data-key="8035.T">¥72,940</span><span class="chg" data-col="chg" data-key="8035.T" style="color:var(--down)">▼7.44%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">6857.T</span><span class="nm">アドバンテスト</span><span class="pr" data-col="pr" data-key="6857.T">¥28,815</span><span class="chg" data-col="chg" data-key="6857.T" style="color:var(--down)">▼9.95%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">6146.T</span><span class="nm">ディスコ</span><span class="pr" data-col="pr" data-key="6146.T">¥76,860</span><span class="chg" data-col="chg" data-key="6146.T" style="color:var(--down)">▼9.06%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">4004.T</span><span class="nm">レゾナック</span><span class="pr" data-col="pr" data-key="4004.T">¥17,900</span><span class="chg" data-col="chg" data-key="4004.T" style="color:var(--down)">▼4.18%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">4062.T</span><span class="nm">イビデン</span><span class="pr" data-col="pr" data-key="4062.T">¥23,420</span><span class="chg" data-col="chg" data-key="4062.T" style="color:var(--down)">▼9.17%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">4063.T</span><span class="nm">信越化学</span><span class="pr" data-col="pr" data-key="4063.T">¥7,024</span><span class="chg" data-col="chg" data-key="4063.T" style="color:var(--down)">▼3.24%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">7741.T</span><span class="nm">HOYA</span><span class="pr" data-col="pr" data-key="7741.T">¥25,590</span><span class="chg" data-col="chg" data-key="7741.T" style="color:var(--down)">▼1.22%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">6920.T</span><span class="nm">レーザーテック</span><span class="pr" data-col="pr" data-key="6920.T">¥47,740</span><span class="chg" data-col="chg" data-key="6920.T" style="color:var(--down)">▼6.01%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">7735.T</span><span class="nm">SCREEN HD</span><span class="pr" data-col="pr" data-key="7735.T">¥18,055</span><span class="chg" data-col="chg" data-key="7735.T" style="color:var(--down)">▼7.36%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">6315.T</span><span class="nm">TOWA</span><span class="pr" data-col="pr" data-key="6315.T">¥3,270</span><span class="chg" data-col="chg" data-key="6315.T" style="color:var(--down)">▼7.63%</span><span class="ds"></span></div>
+</div>
+<div class="sec"><div class="sec-h"><h2>データセンター物理インフラ</h2><span class="en">DC INFRA</span><span class="cnt">11社</span></div>
+<div class="row"><span class="cd">6594.T</span><span class="nm">ニデック</span><span class="pr" data-col="pr" data-key="6594.T">¥2,678</span><span class="chg" data-col="chg" data-key="6594.T" style="color:var(--down)">▼2.51%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">6504.T</span><span class="nm">富士電機</span><span class="pr" data-col="pr" data-key="6504.T">¥13,430</span><span class="chg" data-col="chg" data-key="6504.T" style="color:var(--down)">▼4.72%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">5803.T</span><span class="nm">フジクラ</span><span class="pr" data-col="pr" data-key="5803.T">¥5,368</span><span class="chg" data-col="chg" data-key="5803.T" style="color:var(--down)">▼7.86%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">5802.T</span><span class="nm">住友電工</span><span class="pr" data-col="pr" data-key="5802.T">¥2,688</span><span class="chg" data-col="chg" data-key="5802.T" style="color:var(--down)">▼5.13%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">SMCI</span><span class="nm">Supermicro</span><span class="pr" data-col="pr" data-key="SMCI">$27.65</span><span class="chg" data-col="chg" data-key="SMCI" style="color:var(--down)">▼5.73%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">DELL</span><span class="nm">Dell</span><span class="pr" data-col="pr" data-key="DELL">$425.25</span><span class="chg" data-col="chg" data-key="DELL" style="color:var(--down)">▼1.44%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">GLW</span><span class="nm">Corning</span><span class="pr" data-col="pr" data-key="GLW">$220.63</span><span class="chg" data-col="chg" data-key="GLW" style="color:var(--down)">▼13.62%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">VRT</span><span class="nm">Vertiv</span><span class="pr" data-col="pr" data-key="VRT">$311.42</span><span class="chg" data-col="chg" data-key="VRT" style="color:var(--down)">▼6.99%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">ALAB</span><span class="nm">Astera Labs</span><span class="pr" data-col="pr" data-key="ALAB">$430.86</span><span class="chg" data-col="chg" data-key="ALAB" style="color:var(--down)">▼10.80%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">ANET</span><span class="nm">Arista Networks</span><span class="pr" data-col="pr" data-key="ANET">$166.62</span><span class="chg" data-col="chg" data-key="ANET" style="color:var(--down)">▼1.92%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">WDC</span><span class="nm">Western Digital</span><span class="pr" data-col="pr" data-key="WDC">$598.37</span><span class="chg" data-col="chg" data-key="WDC" style="color:var(--down)">▼6.32%</span><span class="ds"></span></div>
+</div>
+<div class="sec"><div class="sec-h"><h2>フィジカルAI・エッジ</h2><span class="en">PHYSICAL AI</span><span class="cnt">6社</span></div>
+<div class="row"><span class="cd">9984.T</span><span class="nm">ソフトバンクG</span><span class="pr" data-col="pr" data-key="9984.T">¥6,195</span><span class="chg" data-col="chg" data-key="9984.T" style="color:var(--up)">▲3.25%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">AAPL</span><span class="nm">Apple</span><span class="pr" data-col="pr" data-key="AAPL">$294.38</span><span class="chg" data-col="chg" data-key="AAPL" style="color:var(--up)">▲1.73%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">9432.T</span><span class="nm">NTT</span><span class="pr" data-col="pr" data-key="9432.T">¥146</span><span class="chg" data-col="chg" data-key="9432.T" style="color:var(--up)">▲2.31%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">7203.T</span><span class="nm">トヨタ</span><span class="pr" data-col="pr" data-key="7203.T">¥2,793</span><span class="chg" data-col="chg" data-key="7203.T" style="color:var(--up)">▲2.51%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">6758.T</span><span class="nm">ソニー</span><span class="pr" data-col="pr" data-key="6758.T">¥3,330</span><span class="chg" data-col="chg" data-key="6758.T" style="color:var(--up)">▲2.46%</span><span class="ds"></span></div>
+<div class="row"><span class="cd">TSLA</span><span class="nm">Tesla</span><span class="pr" data-col="pr" data-key="TSLA">$425.30</span><span class="chg" data-col="chg" data-key="TSLA" style="color:var(--up)">▲1.12%</span><span class="ds"></span></div>
+</div>
+<!--STOCK_LIST_END-->
+</section>
+
+<section class="seo-section">
+  <h2>生成AIサプライチェーンを「地図」で読む</h2>
+  <p>本サイトは、生成AI三大プレイヤー（OpenAI・Google・Anthropic）を起点に、その基盤を支えるグローバルな企業群を9つの島（セクター）に分類し、島間の供給の流れを有向グラフ（DAG）として可視化したダッシュボードです。上流の半導体設計IP・EDA（島3）と製造装置・材料（島7）から始まるサプライチェーンは、AI半導体（島4）・メモリ（島6）・製造（島5）を経て、データセンター物理インフラ（島8）へと流れ込みます。さらにハイパースケーラー（島2）がその計算資源を集約し、AIモデル（島1）の学習・推論基盤を提供。最終的にフィジカルAI・エッジ（島9）として自動運転・ロボティクス・エッジ端末に実装されます。</p>
+  <h2>日本企業のチョークポイントとしての役割</h2>
+  <p>本サイトの56社のうち19社が日本企業です。とりわけ製造装置・材料（島7）の14社と、データセンター物理インフラ（島8）の4社は、グローバルサプライチェーン上で代替困難な製品・技術を持つチョークポイント企業として選定しています。EUV露光装置の検査（レーザーテック）、半導体ウェハ素材（信越化学）、液冷冷却（ニデック）、超多芯光ファイバー（フジクラ）など、特定工程で世界シェアの大部分を握る企業群です。</p>
+  <h2>選定基準</h2>
+  <p>生成AI三大プレイヤー（OpenAI / Google / Anthropic）を中核とし、その基盤を構築する上流（半導体設計・製造・装置・材料・インフラ）から、AIを実社会へ実装する下流（エッジ・フィジカルAI）までのバリューチェーンを網羅。日本語サイトの特性上、関連する国内企業を厚めに選定しています。非上場企業（OpenAI・Anthropic）は株価データなしで掲載。</p>
+</section>
+
+<footer class="disclaimer">
+  <nav style="display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:12px;font-family:var(--mono);font-size:.72rem">
+    <span style="color:var(--ink-dim);font-weight:700;margin-right:4px">サイト情報 ▶</span>
+    <a href="https://xdbdb.com/privacy/" style="color:var(--ink-dim);text-decoration:none">プライバシーポリシー</a>
+    <a href="https://xdbdb.com/about/" style="color:var(--ink-dim);text-decoration:none">運営者情報</a>
+    <a href="https://xdbdb.com/contact/" style="color:var(--ink-dim);text-decoration:none">お問い合わせ</a>
+  </nav>
+  本サイトの情報は投資勧誘を目的とするものではなく、情報提供のみを目的としています。株価・前日比等のデータは毎営業日の更新を目指していますが、正確性・完全性を保証するものではありません。投資に関する最終判断はご自身の判断と責任においてお願いします。
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script>
+/* ============================================================
+   第6号「生成AIサプライチェーンの有向グラフ」
+   大域：9島が浮かぶ全体DAG／局所：島クリックで内部展開
+   株価・前日比・時価総額は data.json から取得（毎朝更新）
+   ============================================================ */
+
+/* ---- 島の座標（手動指定・上流→下流の流れを反映） ---- */
+const ISLAND_POS = {
+  ai_model:      [800, 800],
+  hyperscaler:   [800, 660],
+  eda:           [380, 100],
+  ai_chip:       [560, 255],
+  manufacturing: [800, 400],
+  memory:        [1040, 255],
+  equipment:     [1220, 100],
+  dc_infra:      [800, 530],
+  physical_ai:   [800, 930],
+};
+
+const ISLAND_SUB = {
+  ai_model:      'AI MODEL',
+  hyperscaler:   'HYPERSCALER',
+  eda:           'EDA / IP',
+  ai_chip:       'AI CHIP',
+  manufacturing: 'FOUNDRY',
+  memory:        'MEMORY',
+  equipment:     'SPE / MATERIALS',
+  dc_infra:      'DC INFRA',
+  physical_ai:   'PHYSICAL AI',
+};
+
+/* ---- グローバル状態 ---- */
+let DATA = null;
+let rScaleFn = () => 8;
+const UNLISTED_R = 9;
+
+/* ---- 時価総額 → ノード半径（対数スケール・正規化） ---- */
+function buildRScale(companies) {
+  const logs = Object.values(companies)
+    .filter(c => c.listed && c.market_cap > 0)
+    .map(c => Math.log10(c.market_cap));
+  if (!logs.length) return;
+  const lo = Math.min(...logs), hi = Math.max(...logs);
+  rScaleFn = (mc) => {
+    if (!mc || mc <= 0) return 5;
+    const t = (Math.log10(mc) - lo) / ((hi - lo) || 1);
+    return 4 + t * 17;
+  };
+}
+
+function radiusOf(c) { return c.listed ? rScaleFn(c.market_cap) : UNLISTED_R; }
+function radiusG(c)  { return radiusOf(c) * 0.62; }
+
+/* ---- カラー・フォーマット ---- */
+const chgColor = (v) => v > 0.05 ? 'var(--up)' : v < -0.05 ? 'var(--down)' : 'var(--flat)';
+function colorOf(c) { return c.listed ? chgColor(c.change_pct || 0) : 'var(--flat)'; }
+
+function fmtPrice(price, currency) {
+  if (price == null) return '—';
+  if (currency === 'JPY') return '¥' + Math.round(price).toLocaleString();
+  if (currency === 'KRW') return '₩' + Math.round(price).toLocaleString();
+  return '$' + price.toFixed(2);
+}
+
+function fmtMcap(mc, currency) {
+  if (!mc) return '—';
+  if (currency === 'USD') {
+    if (mc >= 1e12) return '$' + (mc / 1e12).toFixed(1) + 'T';
+    return '$' + (mc / 1e9).toFixed(0) + 'B';
+  }
+  if (currency === 'JPY') {
+    if (mc >= 1e12) return '¥' + (mc / 1e12).toFixed(1) + '兆';
+    return '¥' + (mc / 1e8).toFixed(0) + '億';
+  }
+  if (currency === 'KRW') {
+    if (mc >= 1e12) return '₩' + (mc / 1e12).toFixed(0) + '조';
+    return '₩' + (mc / 1e8).toFixed(0) + '억';
+  }
+  return mc.toLocaleString();
+}
+
+/* ---- 島メンバー（home + crossover also） ---- */
+function islandMembers(islandId) {
+  if (!DATA) return [];
+  const cx = DATA.crossover_companies || [];
+  const cxNames = new Set(cx.map(e => e.name));
+  const members = [];
+  Object.entries(DATA.companies).forEach(([key, c]) => {
+    if (c.island === islandId) {
+      members.push({...c, _key: key, isAlso: false, isCrossover: cxNames.has(c.name)});
+    }
+  });
+  cx.forEach(e => {
+    if ((e.also || []).includes(islandId)) {
+      const c = Object.values(DATA.companies).find(x => x.name === e.name);
+      if (c) {
+        const key = c.ticker || c.name;
+        members.push({...c, _key: key, isAlso: true, isCrossover: true, homeIsland: e.home});
+      }
+    }
+  });
+  return members;
+}
+
+function islandName(id) {
+  if (!DATA) return id;
+  const isl = (DATA.islands || []).find(x => x.id === id);
+  return isl ? isl.name : id;
+}
+function icx(id) { return (ISLAND_POS[id] || [800, 500])[0]; }
+function icy(id) { return (ISLAND_POS[id] || [800, 500])[1]; }
+
+/* ---- SVG 初期化 ---- */
+const svg = d3.select('#map');
+const W = 1600, H = 1000;
+svg.append('defs').html(
+  '<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">' +
+  '<path d="M0,0 L10,5 L0,10 z" fill="var(--bridge)"></path></marker>'
+);
+const root    = svg.append('g');
+const gBridge = root.append('g');
+const gIsland = root.append('g');
+const gNode   = root.append('g');
+
+const tip    = document.getElementById('tip');
+const crumbs = document.getElementById('crumbs');
+const back   = document.getElementById('back');
+const hint   = document.getElementById('hint');
+
+let mode = 'global', activeIsland = null;
+
+/* ============ 大域ビュー ============ */
+function drawGlobal() {
+  mode = 'global'; activeIsland = null;
+  back.style.display = 'none';
+  crumbs.innerHTML = '<b>大域ビュー</b> ／ 9島 56社（54上場）';
+  hint.style.opacity = '1';
+  hint.textContent = '島をクリックすると内部構造が開きます';
+
+  gBridge.selectAll('*').remove();
+  gIsland.selectAll('*').remove();
+  gNode.selectAll('*').remove();
+
+  if (!DATA) return;
+
+  const islands = DATA.islands || [];
+
+  /* 島の円盤半径を事前計算 */
+  const discR = {};
+  islands.forEach(isl => {
+    const mem = islandMembers(isl.id);
+    const area = mem.reduce((a, c) => a + Math.PI * radiusG(c) ** 2, 0);
+    discR[isl.id] = Math.max(60, Math.sqrt(area / Math.PI) * 1.7 + 14);
+  });
+
+  /* 島間エッジ（有向矢印） */
+  gBridge.selectAll('path').data(DATA.edges || []).join('path')
+    .attr('d', e => {
+      const x1 = icx(e.from), y1 = icy(e.from), x2 = icx(e.to), y2 = icy(e.to);
+      const dx = x2 - x1, dy = y2 - y1, L = Math.hypot(dx, dy) || 1;
+      const ux = dx / L, uy = dy / L;
+      const sx = x1 + ux * discR[e.from], sy = y1 + uy * discR[e.from];
+      const ex = x2 - ux * (discR[e.to] + 11), ey = y2 - uy * (discR[e.to] + 11);
+      return `M${sx},${sy} L${ex},${ey}`;
+    })
+    .attr('fill', 'none')
+    .attr('stroke', 'var(--bridge)').attr('stroke-width', 1.4).attr('stroke-opacity', .5)
+    .attr('marker-end', 'url(#arrow)')
+    .on('mouseenter', function() { d3.select(this).attr('stroke', 'var(--bridge-hot)').attr('stroke-opacity', .95); })
+    .on('mouseleave', function() { d3.select(this).attr('stroke', 'var(--bridge)').attr('stroke-opacity', .5); });
+
+  const isl = gIsland.selectAll('g.isl').data(islands).join('g')
+    .attr('class', 'isl')
+    .attr('transform', d => `translate(${icx(d.id)},${icy(d.id)})`)
+    .style('cursor', 'pointer')
+    .on('click', (e, d) => enterIsland(d.id))
+    .on('mouseenter', function() { d3.select(this).select('.disc').attr('stroke', 'var(--bridge-hot)').attr('stroke-opacity', .9); })
+    .on('mouseleave', function() { d3.select(this).select('.disc').attr('stroke', 'var(--line-soft)').attr('stroke-opacity', 1); });
+
+  isl.append('circle').attr('class', 'disc')
+    .attr('r', d => discR[d.id]).attr('fill', 'rgba(15,29,51,.55)')
+    .attr('stroke', 'var(--line-soft)').attr('stroke-width', 1.2);
+
+  /* 島内の銘柄ノードをパッキング配置 */
+  isl.each(function(isl_d) {
+    const g = d3.select(this);
+    const mem = islandMembers(isl_d.id).map((c, i) => ({...c, x: Math.cos(i * 1.2) * 40, y: Math.sin(i * 1.2) * 40}));
+    const R = discR[isl_d.id] - 10;
+    const sim = d3.forceSimulation(mem)
+      .force('charge', d3.forceManyBody().strength(-4))
+      .force('center', d3.forceCenter(0, 0))
+      .force('collide', d3.forceCollide().radius(d => radiusG(d) + 2))
+      .force('bound', () => {
+        mem.forEach(d => {
+          const dist = Math.hypot(d.x, d.y), max = R - radiusG(d);
+          if (dist > max) { d.x = d.x / dist * max; d.y = d.y / dist * max; }
+        });
+      })
+      .stop();
+    for (let i = 0; i < 120; i++) sim.tick();
+    g.selectAll('circle.mn').data(mem).join('circle').attr('class', 'mn')
+      .attr('cx', d => d.x).attr('cy', d => d.y).attr('r', d => radiusG(d))
+      .attr('fill', d => colorOf(d)).attr('fill-opacity', .9)
+      .attr('stroke', d => d.isCrossover ? 'var(--bridge-hot)' : 'none')
+      .attr('stroke-width', d => d.isCrossover ? 1.2 : 0)
+      .style('cursor', 'pointer')
+      .on('mousemove', (e, d) => showNodeTip(e, d))
+      .on('mouseleave', hideTip)
+      .on('click', (e) => { e.stopPropagation(); enterIsland(isl_d.id); });
+  });
+
+  isl.append('text').attr('class', 'island-label').attr('text-anchor', 'middle')
+    .attr('y', d => -discR[d.id] - 14).text(d => d.name);
+  isl.append('text').attr('class', 'island-sub').attr('text-anchor', 'middle')
+    .attr('y', d => -discR[d.id] - 14 + 15).text(d => ISLAND_SUB[d.id] || '');
+  isl.append('text').attr('class', 'island-sub').attr('text-anchor', 'middle')
+    .attr('y', d => discR[d.id] + 18).attr('fill', 'var(--ink-faint)')
+    .text(d => islandMembers(d.id).length + '社');
+}
+
+/* ============ 局所ビュー（島クリックで遷移） ============ */
+function enterIsland(islandId) {
+  mode = 'local'; activeIsland = islandId;
+  back.style.display = 'inline-flex';
+  crumbs.innerHTML = `大域ビュー ／ <b>${islandName(islandId)}</b>`;
+  hint.style.opacity = '0';
+
+  gBridge.selectAll('*').remove();
+  gIsland.selectAll('*').remove();
+  gNode.selectAll('*').remove();
+
+  const mem = islandMembers(islandId);
+  const cx = W / 2, cy = H / 2 + 10;
+  const nodes = mem.map((c, i) => ({...c, x: cx + Math.cos(i * 1.3) * 140, y: cy + Math.sin(i * 1.3) * 140}));
+
+  /* 出口マーカー */
+  const exits = [];
+  (DATA.edges || []).forEach(e => {
+    if (e.from === islandId) exits.push({to: e.to, dir: 'out'});
+    if (e.to === islandId) exits.push({to: e.from, dir: 'in'});
+  });
+
+  const titleG = gNode.append('g');
+  const isl_obj = (DATA.islands || []).find(x => x.id === islandId) || {};
+  titleG.append('text').attr('x', cx).attr('y', 158).attr('text-anchor', 'middle')
+    .attr('class', 'island-label').style('font-size', '22px').text(isl_obj.name || islandId);
+  titleG.append('text').attr('x', cx).attr('y', 180).attr('text-anchor', 'middle')
+    .attr('class', 'island-sub').text((ISLAND_SUB[islandId] || '') + ' ・ ' + mem.length + '社');
+
+  const nodeSel = gNode.selectAll('g.nd').data(nodes).join('g').attr('class', 'nd')
+    .style('cursor', 'pointer')
+    .on('mousemove', (e, d) => showNodeTip(e, d)).on('mouseleave', hideTip);
+
+  nodeSel.append('circle').attr('r', d => radiusOf(d))
+    .attr('fill', d => colorOf(d)).attr('fill-opacity', .9)
+    .attr('stroke', d => d.isCrossover ? 'var(--bridge-hot)' : 'none')
+    .attr('stroke-width', d => d.isCrossover ? 2 : 0);
+  nodeSel.append('text').attr('class', 'node-label').attr('text-anchor', 'middle')
+    .attr('dy', d => radiusOf(d) + 13).text(d => d.ticker || d.name.slice(0, 8));
+
+  const edgeG = gNode.append('g');
+  exits.forEach((x, i) => {
+    const ang = (i / exits.length) * Math.PI * 2 - Math.PI / 2;
+    const R = 400;
+    const ex = cx + Math.cos(ang) * R, ey = cy + Math.sin(ang) * R * 0.58;
+    edgeG.append('line').attr('x1', cx).attr('y1', cy).attr('x2', ex).attr('y2', ey)
+      .attr('stroke', 'var(--bridge)').attr('stroke-width', 1).attr('stroke-dasharray', '3 4').attr('stroke-opacity', .45);
+    const lab = edgeG.append('g').attr('transform', `translate(${ex},${ey})`)
+      .style('cursor', 'pointer').on('click', () => enterIsland(x.to));
+    const txt = (x.dir === 'out' ? '→ ' : '← ') + islandName(x.to);
+    const w = txt.length * 12 + 24;
+    lab.append('rect').attr('x', -w / 2).attr('y', -14).attr('width', w).attr('height', 28).attr('rx', 14)
+      .attr('fill', 'rgba(10,19,34,.92)').attr('stroke', 'var(--bridge)').attr('stroke-width', 1);
+    lab.append('text').attr('text-anchor', 'middle').attr('dy', 4.5)
+      .attr('class', 'island-sub').style('font-family', 'var(--sans)').attr('fill', 'var(--ink-dim)')
+      .style('font-size', '12px').text(txt);
+    lab.on('mouseenter', function() {
+      d3.select(this).select('rect').attr('stroke', 'var(--bridge-hot)');
+      d3.select(this).select('text').attr('fill', 'var(--ink)');
+    }).on('mouseleave', function() {
+      d3.select(this).select('rect').attr('stroke', 'var(--bridge)');
+      d3.select(this).select('text').attr('fill', 'var(--ink-dim)');
+    });
+  });
+
+  d3.forceSimulation(nodes)
+    .force('charge', d3.forceManyBody().strength(-260))
+    .force('center', d3.forceCenter(cx, cy))
+    .force('collide', d3.forceCollide().radius(d => radiusOf(d) + 24))
+    .force('ring', d3.forceRadial(150, cx, cy).strength(.04))
+    .on('tick', () => { nodeSel.attr('transform', d => `translate(${d.x},${d.y})`); });
+}
+
+/* ============ ツールチップ ============ */
+function showNodeTip(e, c) {
+  const sign = (c.change_pct || 0) > 0 ? '+' : '';
+  const priceStr = c.listed ? fmtPrice(c.price, c.currency) : '非上場';
+  const chgStr = c.listed && c.change_pct != null
+    ? `<span class="chg" style="color:${chgColor(c.change_pct)}">${sign}${c.change_pct.toFixed(2)}%</span>` : '';
+  const mcapStr = c.listed ? fmtMcap(c.market_cap, c.currency) : '';
+
+  const cxEntry = (DATA.crossover_companies || []).find(x => x.name === c.name);
+  const alsoHtml = cxEntry
+    ? `<div class="also">島またぎ：<b>${[islandName(cxEntry.home), ...(cxEntry.also || []).map(islandName)].join(' ⇔ ')}</b></div>` : '';
+
+  tip.innerHTML = `<div class="nm">${c.name}</div>`
+    + (c.ticker ? `<div class="cd">${c.ticker}</div>` : '')
+    + `<div class="pr"><span style="color:var(--ink-faint)">${priceStr}</span> ${chgStr}</div>`
+    + (mcapStr ? `<div class="cd" style="margin-top:3px">時価総額：${mcapStr}</div>` : '')
+    + alsoHtml;
+  placeTip(e);
+}
+
+function placeTip(e) {
+  tip.classList.add('on');
+  const pad = 14;
+  let x = e.clientX + pad, y = e.clientY + pad;
+  const r = tip.getBoundingClientRect();
+  if (x + r.width > innerWidth - 8)  x = e.clientX - r.width - pad;
+  if (y + r.height > innerHeight - 8) y = e.clientY - r.height - pad;
+  tip.style.left = x + 'px'; tip.style.top = y + 'px';
+}
+function hideTip() { tip.classList.remove('on'); }
+
+back.addEventListener('click', () => drawGlobal());
+
+/* ============ 下部：SEO用の銘柄一覧（JS で再レンダリング） ============ */
+function renderList() {
+  if (!DATA) return;
+  const el = document.getElementById('list');
+  let html = `<div class="lead"><p class="lead-h">地図の読み方</p><ul>
+    <li><b>島（円）</b> … AIサプライチェーン上の9つのセクター。</li>
+    <li><b>ノード（点）</b> … 個別銘柄。大きさは時価総額（対数スケール）、色は前日比（緑＝上昇、赤＝下落）。非上場はグレー固定。</li>
+    <li><b>矢印</b> … セクター間の供給の流れ（商流ベース）。上流（EDA・装置）から下流（フィジカルAI）へ。</li>
+    <li><b>橙色の縁取り</b> … 複数の島にまたがる銘柄（Intel・Samsung Electronics）。</li>
+    </ul></div>`;
+
+  (DATA.islands || []).forEach(isl => {
+    const members = Object.values(DATA.companies).filter(c => c.island === isl.id);
+    html += `<div class="sec"><div class="sec-h"><h2>${isl.name}</h2>`
+      + `<span class="en">${ISLAND_SUB[isl.id] || ''}</span><span class="cnt">${members.length}社</span></div>`;
+    members.forEach(c => {
+      const key = c.ticker || c.name;
+      const cxEntry = (DATA.crossover_companies || []).find(x => x.name === c.name);
+      const crossTag = cxEntry
+        ? ` <span class="also-tag">※${(cxEntry.also || []).map(islandName).join('・')}にも関連</span>` : '';
+      if (!c.listed) {
+        html += `<div class="row">`
+          + `<span class="cd">—</span>`
+          + `<span class="nm">${c.name}<span class="unl">非上場</span></span>`
+          + `<span class="pr">—</span><span class="chg">—</span>`
+          + `<span class="ds">${c.description || ''}</span></div>`;
+      } else {
+        const sign = (c.change_pct || 0) > 0 ? '+' : '';
+        const col = chgColor(c.change_pct || 0);
+        const arrow = (c.change_pct || 0) > 0.05 ? '▲' : (c.change_pct || 0) < -0.05 ? '▼' : '–';
+        const priceStr = fmtPrice(c.price, c.currency);
+        html += `<div class="row">`
+          + `<span class="cd">${c.ticker}</span>`
+          + `<span class="nm">${c.name}${crossTag}</span>`
+          + `<span class="pr" data-col="pr" data-key="${key}">${priceStr}</span>`
+          + `<span class="chg" data-col="chg" data-key="${key}" style="color:${col}">${arrow}${sign}${(c.change_pct || 0).toFixed(2)}%</span>`
+          + `<span class="ds">${c.description || ''}</span></div>`;
+      }
+    });
+    html += `</div>`;
+  });
+  el.innerHTML = html;
+}
+
+/* ============ 初期化 ============ */
+async function init() {
+  const hdrEl = document.getElementById('page-header');
+  if (hdrEl) {
+    const navH = hdrEl.previousElementSibling ? hdrEl.previousElementSibling.offsetHeight : 0;
+    const leadEl = document.getElementById('ai-lead');
+    document.documentElement.style.setProperty('--hdr',
+      (hdrEl.offsetHeight + navH + (leadEl ? leadEl.offsetHeight : 0)) + 'px');
+  }
+  try {
+    const res = await fetch('data.json?_=' + Date.now());
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    DATA = await res.json();
+    buildRScale(DATA.companies || {});
+    if (DATA._meta && DATA._meta.generated_at) {
+      const dt = new Date(DATA._meta.generated_at);
+      const s = dt.toLocaleString('ja-JP', {
+        year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', timeZone: 'Asia/Tokyo'
+      });
+      const el = document.getElementById('ph-generated');
+      if (el) el.textContent = s + ' JST';
+    }
+  } catch(e) {
+    console.warn('data.json 読み込み失敗（デフォルト値で表示）:', e);
+  }
+  drawGlobal();
+  renderList();
+}
+
+init();
+</script>
+</body>
+</html>
