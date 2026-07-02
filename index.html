@@ -58,12 +58,12 @@
   svg{width:100%;height:100%;display:block;cursor:default}
   .crumbs{position:absolute;
     top:14px;
-    right:max(18px, calc((100vw - (100vh - var(--hdr)) * 1.6) / 2 + 18px));
+    right:max(18px, calc((100vw - (100vh - var(--hdr)) * 2.105) / 2 + 18px));
     z-index:20;font-size:11.5px;color:var(--ink-faint);font-family:var(--mono);pointer-events:none}
   .crumbs b{color:var(--ink-dim);font-weight:500}
   .hud{
     position:absolute;
-    left:max(18px, calc((100vw - (100vh - var(--hdr)) * 1.6) / 2 + 18px));
+    left:max(18px, calc((100vw - (100vh - var(--hdr)) * 2.105) / 2 + 18px));
     bottom:20px;z-index:20;
     display:flex;flex-direction:column;gap:8px;font-size:11px;color:var(--ink-dim);
   }
@@ -97,10 +97,10 @@
     font-size:10.5px;color:var(--ink-dim);line-height:1.5}
   .tip .also b{color:var(--bridge-hot);font-weight:500}
   text{user-select:none}
-  .island-label{font-size:13px;font-weight:600;letter-spacing:.04em;fill:var(--ink)}
-  .island-sub{font-size:10px;fill:var(--ink-faint);font-family:var(--mono);letter-spacing:.05em}
+  .island-label{font-size:16px;font-weight:600;letter-spacing:.04em;fill:var(--ink)}
+  .island-sub{font-size:11.5px;fill:var(--ink-faint);font-family:var(--mono);letter-spacing:.05em}
   .node-label{font-size:10.5px;fill:var(--ink-dim);font-family:var(--sans)}
-  .hint{position:absolute;left:50%;bottom:54px;transform:translateX(-50%);z-index:15;
+  .hint{position:absolute;left:50%;top:16px;transform:translateX(-50%);z-index:15;
     font-size:11px;color:var(--ink-faint);letter-spacing:.04em;pointer-events:none;
     transition:opacity .4s}
   .scroll-cue{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:15;
@@ -176,7 +176,7 @@
 <div id="stage">
   <span class="crumbs" id="crumbs"><b>大域ビュー</b> ／ 9島 56社（54上場）</span>
 
-  <svg id="map" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid meet"></svg>
+  <svg id="map" viewBox="0 0 1600 760" preserveAspectRatio="xMidYMid meet"></svg>
 
   <div class="hint" id="hint">島をクリックすると内部構造が開きます</div>
 
@@ -301,17 +301,17 @@
    株価・前日比・時価総額は data.json から取得（毎朝更新）
    ============================================================ */
 
-/* ---- 島の座標（手動指定・上流→下流の流れを反映） ---- */
+/* ---- 島の座標（手動指定・左＝上流 → 右＝下流の流れ） ---- */
 const ISLAND_POS = {
-  ai_model:      [800, 800],
-  hyperscaler:   [800, 660],
-  eda:           [380, 100],
-  ai_chip:       [560, 255],
-  manufacturing: [800, 400],
-  memory:        [1040, 255],
-  equipment:     [1220, 100],
-  dc_infra:      [800, 530],
-  physical_ai:   [800, 930],
+  eda:           [140, 200],
+  equipment:     [140, 580],
+  ai_chip:       [370, 200],
+  memory:        [370, 580],
+  manufacturing: [600, 390],
+  dc_infra:      [830, 390],
+  hyperscaler:   [1060, 390],
+  ai_model:      [1290, 390],
+  physical_ai:   [1520, 390],
 };
 
 const ISLAND_SUB = {
@@ -409,7 +409,7 @@ function icy(id) { return (ISLAND_POS[id] || [800, 500])[1]; }
 
 /* ---- SVG 初期化 ---- */
 const svg = d3.select('#map');
-const W = 1600, H = 1000;
+const W = 1600, H = 760;
 svg.append('defs').html(
   '<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">' +
   '<path d="M0,0 L10,5 L0,10 z" fill="var(--bridge)"></path></marker>'
@@ -506,12 +506,17 @@ function drawGlobal() {
       .on('click', (e) => { e.stopPropagation(); enterIsland(isl_d.id); });
   });
 
+  /* 中央チェーンはラベルを上下交互に配置（横並びの読み違い防止） */
+  const LABEL_BELOW = new Set(['dc_infra', 'ai_model']);
   isl.append('text').attr('class', 'island-label').attr('text-anchor', 'middle')
-    .attr('y', d => -discR[d.id] - 14).text(d => d.name);
+    .attr('y', d => LABEL_BELOW.has(d.id) ? discR[d.id] + 34 : -discR[d.id] - 14)
+    .text(d => d.name);
   isl.append('text').attr('class', 'island-sub').attr('text-anchor', 'middle')
-    .attr('y', d => -discR[d.id] - 14 + 15).text(d => ISLAND_SUB[d.id] || '');
+    .attr('y', d => LABEL_BELOW.has(d.id) ? discR[d.id] + 50 : -discR[d.id] + 1)
+    .text(d => ISLAND_SUB[d.id] || '');
   isl.append('text').attr('class', 'island-sub').attr('text-anchor', 'middle')
-    .attr('y', d => discR[d.id] + 18).attr('fill', 'var(--ink-faint)')
+    .attr('y', d => LABEL_BELOW.has(d.id) ? -discR[d.id] - 14 : discR[d.id] + 18)
+    .attr('fill', 'var(--ink-faint)')
     .text(d => islandMembers(d.id).length + '社');
 }
 
@@ -539,9 +544,9 @@ function enterIsland(islandId) {
 
   const titleG = gNode.append('g');
   const isl_obj = (DATA.islands || []).find(x => x.id === islandId) || {};
-  titleG.append('text').attr('x', cx).attr('y', 158).attr('text-anchor', 'middle')
+  titleG.append('text').attr('x', cx).attr('y', 64).attr('text-anchor', 'middle')
     .attr('class', 'island-label').style('font-size', '22px').text(isl_obj.name || islandId);
-  titleG.append('text').attr('x', cx).attr('y', 180).attr('text-anchor', 'middle')
+  titleG.append('text').attr('x', cx).attr('y', 88).attr('text-anchor', 'middle')
     .attr('class', 'island-sub').text((ISLAND_SUB[islandId] || '') + ' ・ ' + mem.length + '社');
 
   const nodeSel = gNode.selectAll('g.nd').data(nodes).join('g').attr('class', 'nd')
