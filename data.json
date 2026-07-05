@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-07-05T05:31:11+09:00",
+    "generated_at": "2026-07-06T05:31:28+09:00",
     "status": "complete",
     "site_name": "生成AIサプライチェーンの有向グラフ"
   },
@@ -182,7 +182,7 @@
       "currency": "USD",
       "price": 245.29,
       "change_pct": -9.84,
-      "market_cap": 214579686126,
+      "market_cap": 214764431926,
       "date": "2026-07-02"
     },
     "ARM": {
