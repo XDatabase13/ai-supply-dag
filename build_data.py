@@ -83,18 +83,42 @@ def extract_price(data, ticker, multi):
 
 
 def fetch_ticker_info(ticker):
-    """Return (market_cap, currency) for one ticker with retry."""
+    """
+    Return (market_cap, currency, quote_price, quote_date_str) for one ticker with retry.
+
+    quote_price/quote_date_str: チャートAPIメタ（quote相当）の直近約定値とその日付。
+    2026-07-06頃からYahooのチャートAPIが東証・韓国取引所などの銘柄で
+    「引け後〜翌営業日の反映まで」直近セッションの日足バーを返さなくなったため、
+    バッチダウンロードの終端が古い場合のフォールバックに使う。
+    """
     for attempt in range(1, MAX_RETRIES + 1):
         try:
-            fi = yf.Ticker(ticker).fast_info
+            t = yf.Ticker(ticker)
+            fi = t.fast_info
             market_cap = getattr(fi, "market_cap", None)
             currency = getattr(fi, "currency", None)
-            return market_cap, currency
+
+            quote_price = quote_date = None
+            try:
+                t.history(period="2d")
+                meta = t.get_history_metadata()
+                price = meta.get("regularMarketPrice")
+                epoch = meta.get("regularMarketTime")
+                tz_name = meta.get("exchangeTimezoneName")
+                if price is not None and epoch is not None and tz_name is not None and price > 0:
+                    quote_price = float(price)
+                    quote_date = str(
+                        pd.Timestamp(epoch, unit="s", tz="UTC").tz_convert(tz_name).date()
+                    )
+            except Exception:
+                pass
+
+            return market_cap, currency, quote_price, quote_date
         except Exception as e:
             print(f"  [info] {ticker} attempt {attempt}/{MAX_RETRIES}: {e}")
             if attempt < MAX_RETRIES:
                 time.sleep(RETRY_INTERVAL)
-    return None, None
+    return None, None, None, None
 
 
 def is_fresh(date_str):
@@ -155,12 +179,21 @@ def main():
             extract_price(raw, ticker, multi) if raw is not None else (None, None, None)
         )
 
-        # Per-ticker market_cap and currency
+        # Per-ticker market_cap, currency, and quote fallback
         market_cap, currency = (None, None)
         if raw is not None:
-            market_cap, currency = fetch_ticker_info(ticker)
+            market_cap, currency, quote_price, quote_date = fetch_ticker_info(ticker)
             if market_cap is not None:
                 market_cap = int(market_cap)
+
+            # quoteフォールバック: バッチの日足終端より新しい約定があれば採用
+            if (quote_price is not None and quote_date is not None
+                    and price is not None and date_str is not None
+                    and quote_date > date_str):
+                print(f"  [補正] {ticker}: 日足が{date_str}止まり → quote終値({quote_date} {quote_price})を採用")
+                change_pct = round((quote_price - price) / price * 100, 2) if price else None
+                price = round(quote_price, 4)
+                date_str = quote_date
 
         # Fallback to previous data
         if price is None:
