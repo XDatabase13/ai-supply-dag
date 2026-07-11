@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-07-11T05:31:38+09:00",
+    "generated_at": "2026-07-11T19:35:39+09:00",
     "status": "complete",
     "site_name": "生成AIサプライチェーンの有向グラフ"
   },
@@ -73,7 +73,7 @@
       "description": "データベース大手。高速なクラウドインフラ（OCI）を展開し、大規模なGPUクラスターをAIモデル企業に供給。",
       "currency": "USD",
       "price": 140.64,
-      "change_pct": -2.48,
+      "change_pct": -2.14,
       "market_cap": 405109439681,
       "date": "2026-07-10"
     },
@@ -181,8 +181,8 @@
       "description": "データインフラ半導体大手。AIデータセンター内部の高速通信用チップや、カスタムASIC設計プラットフォームを供給。",
       "currency": "USD",
       "price": 235.81,
-      "change_pct": -3.07,
-      "market_cap": 206286585864,
+      "change_pct": -3.04,
+      "market_cap": 211649948196,
       "date": "2026-07-10"
     },
     "ARM": {
@@ -600,9 +600,9 @@
       "listed": true,
       "description": "ストレージ大手。AIの学習・推論に用いる大量のデータを保管する、DC向けの大容量ニアラインHDDを供給。",
       "currency": "USD",
-      "price": 582.585,
-      "change_pct": 0.78,
-      "market_cap": 200806646862,
+      "price": 582.59,
+      "change_pct": 0.79,
+      "market_cap": 200808371955,
       "date": "2026-07-10"
     },
     "9984.T": {
@@ -638,7 +638,7 @@
       "currency": "JPY",
       "price": 147.6,
       "change_pct": -0.94,
-      "market_cap": 12018126992436,
+      "market_cap": 12018127489406,
       "date": "2026-07-10"
     },
     "7203.T": {
