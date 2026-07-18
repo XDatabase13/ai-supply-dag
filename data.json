@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-07-18T05:31:07+09:00",
+    "generated_at": "2026-07-19T05:31:08+09:00",
     "status": "complete",
     "site_name": "生成AIサプライチェーンの有向グラフ"
   },
@@ -108,9 +108,9 @@
       "listed": true,
       "description": "半導体設計支援（EDA）ツール・IPの世界最大手。AI半導体の複雑な回路設計に不可欠なソフトウェアを供給。",
       "currency": "USD",
-      "price": 384.275,
+      "price": 384.28,
       "change_pct": -7.85,
-      "market_cap": 73580716445,
+      "market_cap": 73581674777,
       "date": "2026-07-17"
     },
     "CDNS": {
@@ -144,9 +144,9 @@
       "listed": true,
       "description": "通信・半導体大手。ハイパースケーラー向けにカスタムAIシリコン（ASIC）の開発や高速ネットワーク接続を供給。",
       "currency": "USD",
-      "price": 370.825,
+      "price": 370.83,
       "change_pct": -0.97,
-      "market_cap": 1764229734999,
+      "market_cap": 1764253400940,
       "date": "2026-07-17"
     },
     "AMD": {
@@ -638,7 +638,7 @@
       "currency": "JPY",
       "price": 151.1,
       "change_pct": 0.13,
-      "market_cap": 12303109678571,
+      "market_cap": 12303110175541,
       "date": "2026-07-17"
     },
     "7203.T": {
