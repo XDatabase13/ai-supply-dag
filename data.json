@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-07-25T05:30:54+09:00",
+    "generated_at": "2026-07-26T05:31:15+09:00",
     "status": "complete",
     "site_name": "生成AIサプライチェーンの有向グラフ"
   },
@@ -50,7 +50,7 @@
       "currency": "USD",
       "price": 381.7,
       "change_pct": 0.03,
-      "market_cap": 2835433617195,
+      "market_cap": 2835433526516,
       "date": "2026-07-24"
     },
     "AMZN": {
@@ -62,7 +62,7 @@
       "currency": "USD",
       "price": 232.11,
       "change_pct": -0.66,
-      "market_cap": 2496832677755,
+      "market_cap": 2496832671189,
       "date": "2026-07-24"
     },
     "ORCL": {
@@ -86,7 +86,7 @@
       "currency": "USD",
       "price": 71.88,
       "change_pct": -11.37,
-      "market_cap": 39215594972,
+      "market_cap": 39215596470,
       "date": "2026-07-24"
     },
     "META": {
@@ -98,7 +98,7 @@
       "currency": "USD",
       "price": 595.19,
       "change_pct": -1.8,
-      "market_cap": 1510844172505,
+      "market_cap": 1510844166307,
       "date": "2026-07-24"
     },
     "SNPS": {
@@ -110,7 +110,7 @@
       "currency": "USD",
       "price": 373.47,
       "change_pct": -0.01,
-      "market_cap": 71511783741,
+      "market_cap": 71511783507,
       "date": "2026-07-24"
     },
     "CDNS": {
@@ -122,7 +122,7 @@
       "currency": "USD",
       "price": 326.24,
       "change_pct": -1.28,
-      "market_cap": 89982209146,
+      "market_cap": 89982211840,
       "date": "2026-07-24"
     },
     "NVDA": {
@@ -170,7 +170,7 @@
       "currency": "USD",
       "price": 92.32,
       "change_pct": -7.89,
-      "market_cap": 464000318466,
+      "market_cap": 465662078460,
       "date": "2026-07-24"
     },
     "MRVL": {
@@ -230,7 +230,7 @@
       "currency": "USD",
       "price": 64.96,
       "change_pct": -0.57,
-      "market_cap": 16101798542,
+      "market_cap": 16101798769,
       "date": "2026-07-24"
     },
     "ASX": {
@@ -242,7 +242,7 @@
       "currency": "USD",
       "price": 36.84,
       "change_pct": -6.64,
-      "market_cap": 80824963201,
+      "market_cap": 80824962866,
       "date": "2026-07-24"
     },
     "000660.KS": {
@@ -338,7 +338,7 @@
       "currency": "USD",
       "price": 305.21,
       "change_pct": -4.56,
-      "market_cap": 381676997504,
+      "market_cap": 381677008190,
       "date": "2026-07-24"
     },
     "KLAC": {
@@ -350,7 +350,7 @@
       "currency": "USD",
       "price": 210.52,
       "change_pct": -3.75,
-      "market_cap": 274997062790,
+      "market_cap": 274997057209,
       "date": "2026-07-24"
     },
     "8035.T": {
@@ -554,7 +554,7 @@
       "currency": "USD",
       "price": 146.65,
       "change_pct": -6.03,
-      "market_cap": 126212531783,
+      "market_cap": 126212537036,
       "date": "2026-07-24"
     },
     "VRT": {
@@ -566,7 +566,7 @@
       "currency": "USD",
       "price": 290.36,
       "change_pct": -4.5,
-      "market_cap": 111529830187,
+      "market_cap": 111529835813,
       "date": "2026-07-24"
     },
     "ALAB": {
@@ -578,7 +578,7 @@
       "currency": "USD",
       "price": 291.58,
       "change_pct": -10.82,
-      "market_cap": 49979124551,
+      "market_cap": 49979126853,
       "date": "2026-07-24"
     },
     "ANET": {
@@ -590,7 +590,7 @@
       "currency": "USD",
       "price": 173.99,
       "change_pct": -1.48,
-      "market_cap": 219082897434,
+      "market_cap": 219082890517,
       "date": "2026-07-24"
     },
     "WDC": {
@@ -602,7 +602,7 @@
       "currency": "USD",
       "price": 519.8,
       "change_pct": -6.9,
-      "market_cap": 179165767486,
+      "market_cap": 179165771693,
       "date": "2026-07-24"
     },
     "9984.T": {
@@ -638,7 +638,7 @@
       "currency": "JPY",
       "price": 151.3,
       "change_pct": 1.07,
-      "market_cap": 12319394403493,
+      "market_cap": 12319394651978,
       "date": "2026-07-24"
     },
     "7203.T": {
@@ -674,7 +674,7 @@
       "currency": "USD",
       "price": 313.03,
       "change_pct": -2.08,
-      "market_cap": 1236326815922,
+      "market_cap": 1236326820743,
       "date": "2026-07-24"
     }
   },
