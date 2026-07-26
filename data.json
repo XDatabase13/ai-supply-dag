@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-07-26T05:31:15+09:00",
+    "generated_at": "2026-07-27T05:31:12+09:00",
     "status": "complete",
     "site_name": "生成AIサプライチェーンの有向グラフ"
   },
@@ -26,7 +26,7 @@
       "currency": "USD",
       "price": 319.74,
       "change_pct": 0.65,
-      "market_cap": 3910399243430,
+      "market_cap": 3910399362863,
       "date": "2026-07-24"
     },
     "Anthropic": {
@@ -74,7 +74,7 @@
       "currency": "USD",
       "price": 114.99,
       "change_pct": -4.21,
-      "market_cap": 331225354136,
+      "market_cap": 331225360290,
       "date": "2026-07-24"
     },
     "CRWV": {
@@ -134,7 +134,7 @@
       "currency": "USD",
       "price": 206.84,
       "change_pct": -0.92,
-      "market_cap": 5009871551300,
+      "market_cap": 5009871640000,
       "date": "2026-07-24"
     },
     "AVGO": {
@@ -146,7 +146,7 @@
       "currency": "USD",
       "price": 381.92,
       "change_pct": -2.69,
-      "market_cap": 1817015093103,
+      "market_cap": 1817015029220,
       "date": "2026-07-24"
     },
     "AMD": {
@@ -158,7 +158,7 @@
       "currency": "USD",
       "price": 521.95,
       "change_pct": -3.29,
-      "market_cap": 851092023430,
+      "market_cap": 851092003526,
       "date": "2026-07-24"
     },
     "INTC": {
@@ -170,7 +170,7 @@
       "currency": "USD",
       "price": 92.32,
       "change_pct": -7.89,
-      "market_cap": 465662078460,
+      "market_cap": 465662079999,
       "date": "2026-07-24"
     },
     "MRVL": {
@@ -182,7 +182,7 @@
       "currency": "USD",
       "price": 194.23,
       "change_pct": -7.21,
-      "market_cap": 174330049444,
+      "market_cap": 174330053279,
       "date": "2026-07-24"
     },
     "ARM": {
@@ -194,7 +194,7 @@
       "currency": "USD",
       "price": 260.01,
       "change_pct": -8.14,
-      "market_cap": 276664644389,
+      "market_cap": 276664633998,
       "date": "2026-07-24"
     },
     "QCOM": {
@@ -206,7 +206,7 @@
       "currency": "USD",
       "price": 166.97,
       "change_pct": -2.42,
-      "market_cap": 175986381286,
+      "market_cap": 175986380000,
       "date": "2026-07-24"
     },
     "TSM": {
@@ -218,7 +218,7 @@
       "currency": "USD",
       "price": 403.41,
       "change_pct": -2.93,
-      "market_cap": 2092275500577,
+      "market_cap": 2092275481584,
       "date": "2026-07-24"
     },
     "AMKR": {
@@ -266,7 +266,7 @@
       "currency": "USD",
       "price": 920.95,
       "change_pct": -6.99,
-      "market_cap": 1040114636199,
+      "market_cap": 1040114622413,
       "date": "2026-07-24"
     },
     "005930.KS": {
@@ -300,9 +300,9 @@
       "listed": true,
       "description": "フラッシュメモリ専業（WDCから分離独立）。AIデータレイクやエッジデバイス向けの高速ストレージ製品を供給。",
       "currency": "USD",
-      "price": 1436.5601,
+      "price": 1436.56,
       "change_pct": -10.79,
-      "market_cap": 212739831429,
+      "market_cap": 212739822752,
       "date": "2026-07-24"
     },
     "ASML": {
@@ -314,7 +314,7 @@
       "currency": "USD",
       "price": 1757.09,
       "change_pct": -2.55,
-      "market_cap": 674898255871,
+      "market_cap": 674898269000,
       "date": "2026-07-24"
     },
     "AMAT": {
@@ -530,7 +530,7 @@
       "currency": "USD",
       "price": 30.1,
       "change_pct": -3.53,
-      "market_cap": 19470878359,
+      "market_cap": 19470878112,
       "date": "2026-07-24"
     },
     "DELL": {
@@ -626,7 +626,7 @@
       "currency": "USD",
       "price": 333.02,
       "change_pct": 3.53,
-      "market_cap": 4891183133759,
+      "market_cap": 4891183295120,
       "date": "2026-07-24"
     },
     "9432.T": {
