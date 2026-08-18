@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-18T05:31:40+09:00",
+    "generated_at": "2026-08-19T05:30:52+09:00",
     "status": "complete",
     "site_name": "生成AIサプライチェーンの有向グラフ"
   },
@@ -24,10 +24,10 @@
       "listed": true,
       "description": "検索大手。自社開発のAIモデル「Gemini」やカスタムチップ「TPU」を擁し、強力なAI基盤を提供。",
       "currency": "USD",
-      "price": 344.0,
-      "change_pct": -0.55,
-      "market_cap": 4207097581864,
-      "date": "2026-08-17"
+      "price": 344.2,
+      "change_pct": 0.06,
+      "market_cap": 4209543718121,
+      "date": "2026-08-18"
     },
     "Anthropic": {
       "name": "Anthropic",
@@ -48,10 +48,10 @@
       "listed": true,
       "description": "IT大手。OpenAIと深く提携し、クラウド「Azure」を通じて世界規模のAI計算インフラをモデル企業へ提供。",
       "currency": "USD",
-      "price": 480.35,
-      "change_pct": -3.04,
-      "market_cap": 3566860821923,
-      "date": "2026-08-17"
+      "price": 481.63,
+      "change_pct": 0.27,
+      "market_cap": 3576365511087,
+      "date": "2026-08-18"
     },
     "AMZN": {
       "name": "Amazon",
@@ -60,10 +60,10 @@
       "listed": true,
       "description": "クラウド（AWS）世界首位。膨大な計算資源と自社開発チップを揃え、AIモデル開発者や企業にインフラを提供。",
       "currency": "USD",
-      "price": 261.31,
-      "change_pct": -0.51,
-      "market_cap": 2818571573165,
-      "date": "2026-08-17"
+      "price": 259.45,
+      "change_pct": -0.71,
+      "market_cap": 2798509187924,
+      "date": "2026-08-18"
     },
     "ORCL": {
       "name": "Oracle",
@@ -72,10 +72,10 @@
       "listed": true,
       "description": "データベース大手。高速なクラウドインフラ（OCI）を展開し、大規模なGPUクラスターをAIモデル企業に供給。",
       "currency": "USD",
-      "price": 146.65,
-      "change_pct": -2.57,
-      "market_cap": 422421054569,
-      "date": "2026-08-17"
+      "price": 142.79,
+      "change_pct": -2.63,
+      "market_cap": 411302434750,
+      "date": "2026-08-18"
     },
     "CRWV": {
       "name": "CoreWeave",
@@ -84,10 +84,10 @@
       "listed": true,
       "description": "AI特化型クラウド。NVIDIA製GPUを大量に配備した高性能インフラを高速かつ柔軟にAI開発企業へ供給。",
       "currency": "USD",
-      "price": 106.0,
-      "change_pct": 0.7,
-      "market_cap": 58462879812,
-      "date": "2026-08-17"
+      "price": 93.17,
+      "change_pct": -12.1,
+      "market_cap": 51386664198,
+      "date": "2026-08-18"
     },
     "META": {
       "name": "Meta",
@@ -96,10 +96,10 @@
       "listed": true,
       "description": "SNS大手。オープンソースのAIモデル「Llama」を開発しつつ、膨大なGPUからなる巨大なインフラを自社運用。",
       "currency": "USD",
-      "price": 568.97,
-      "change_pct": -3.54,
-      "market_cap": 1449454542204,
-      "date": "2026-08-17"
+      "price": 543.67,
+      "change_pct": -4.45,
+      "market_cap": 1385002665809,
+      "date": "2026-08-18"
     },
     "SNPS": {
       "name": "Synopsys",
@@ -108,10 +108,10 @@
       "listed": true,
       "description": "半導体設計支援（EDA）ツール・IPの世界最大手。AI半導体の複雑な回路設計に不可欠なソフトウェアを供給。",
       "currency": "USD",
-      "price": 413.22,
-      "change_pct": -1.96,
-      "market_cap": 79123086910,
-      "date": "2026-08-17"
+      "price": 404.41,
+      "change_pct": -2.13,
+      "market_cap": 77436154524,
+      "date": "2026-08-18"
     },
     "CDNS": {
       "name": "Cadence",
@@ -120,10 +120,10 @@
       "listed": true,
       "description": "EDAおよび設計用IPの大手。AIアクセラレータや高帯域メモリの効率的な設計・検証システムを半導体企業へ供給。",
       "currency": "USD",
-      "price": 323.47,
-      "change_pct": -0.42,
-      "market_cap": 89081374046,
-      "date": "2026-08-17"
+      "price": 316.52,
+      "change_pct": -2.15,
+      "market_cap": 87167389334,
+      "date": "2026-08-18"
     },
     "NVDA": {
       "name": "NVIDIA",
@@ -132,10 +132,10 @@
       "listed": true,
       "description": "AI半導体（GPU）で圧倒的首位。ファブレスとして最先端アクセラレータを開発し、データセンター向けに供給。",
       "currency": "USD",
-      "price": 225.01,
-      "change_pct": -0.07,
-      "market_cap": 5449967076950,
-      "date": "2026-08-17"
+      "price": 219.74,
+      "change_pct": -2.34,
+      "market_cap": 5322322673049,
+      "date": "2026-08-18"
     },
     "AVGO": {
       "name": "Broadcom",
@@ -144,10 +144,10 @@
       "listed": true,
       "description": "通信・半導体大手。ハイパースケーラー向けにカスタムAIシリコン（ASIC）の開発や高速ネットワーク接続を供給。",
       "currency": "USD",
-      "price": 392.43,
-      "change_pct": -0.14,
-      "market_cap": 1867017162255,
-      "date": "2026-08-17"
+      "price": 380.0,
+      "change_pct": -3.17,
+      "market_cap": 1807880475240,
+      "date": "2026-08-18"
     },
     "AMD": {
       "name": "AMD",
@@ -156,10 +156,10 @@
       "listed": true,
       "description": "半導体大手。GPU「Instinct」シリーズを展開し、NVIDIAに対抗する高性能AIアクセラレータを市場に供給。",
       "currency": "USD",
-      "price": 506.0,
-      "change_pct": -1.63,
-      "market_cap": 826032371252,
-      "date": "2026-08-17"
+      "price": 484.39,
+      "change_pct": -4.27,
+      "market_cap": 790754609507,
+      "date": "2026-08-18"
     },
     "INTC": {
       "name": "Intel",
@@ -168,10 +168,10 @@
       "listed": true,
       "description": "半導体大手。AI向けCPUやアクセラレータを設計し、自社ファウンドリ（Intel Foundry）で外部企業向けの受託製造も展開。",
       "currency": "USD",
-      "price": 103.49,
-      "change_pct": 0.97,
-      "market_cap": 543790917114,
-      "date": "2026-08-17"
+      "price": 96.685,
+      "change_pct": -6.58,
+      "market_cap": 511087074350,
+      "date": "2026-08-18"
     },
     "MRVL": {
       "name": "Marvell",
@@ -180,10 +180,10 @@
       "listed": true,
       "description": "データインフラ半導体大手。AIデータセンター内部の高速通信用チップや、カスタムASIC設計プラットフォームを供給。",
       "currency": "USD",
-      "price": 234.33,
-      "change_pct": 5.54,
-      "market_cap": 210321586285,
-      "date": "2026-08-17"
+      "price": 216.0,
+      "change_pct": -7.82,
+      "market_cap": 193869595368,
+      "date": "2026-08-18"
     },
     "ARM": {
       "name": "ARM",
@@ -192,10 +192,10 @@
       "listed": true,
       "description": "チップ設計IPの大手。省電力かつ高性能なプロセッサアーキテクチャを、AI半導体を設計する世界中の企業へ供給。",
       "currency": "USD",
-      "price": 271.43,
-      "change_pct": -2.87,
-      "market_cap": 289886843761,
-      "date": "2026-08-17"
+      "price": 253.32,
+      "change_pct": -6.67,
+      "market_cap": 270545405321,
+      "date": "2026-08-18"
     },
     "QCOM": {
       "name": "Qualcomm",
@@ -204,10 +204,10 @@
       "listed": true,
       "description": "通信半導体大手。高い省電力性を誇るAIプロセッサ「Snapdragon」を擁し、エッジAI向けにチップを供給。",
       "currency": "USD",
-      "price": 162.18,
-      "change_pct": -2.18,
-      "market_cap": 170288992309,
-      "date": "2026-08-17"
+      "price": 160.19,
+      "change_pct": -1.23,
+      "market_cap": 168236974369,
+      "date": "2026-08-18"
     },
     "TSM": {
       "name": "TSMC",
@@ -216,10 +216,10 @@
       "listed": true,
       "description": "ファウンドリ（半導体受託製造）世界首位。最先端プロセスと「CoWoS」などのパッケージング技術でAI半導体を一手に製造。",
       "currency": "USD",
-      "price": 430.97,
-      "change_pct": 1.08,
-      "market_cap": 2235214711713,
-      "date": "2026-08-17"
+      "price": 413.41,
+      "change_pct": -4.07,
+      "market_cap": 2144140240707,
+      "date": "2026-08-18"
     },
     "AMKR": {
       "name": "Amkor",
@@ -228,10 +228,10 @@
       "listed": true,
       "description": "半導体後工程（OSAT）大手。高度な先端パッケージング技術を持ち、AI半導体やメモリの最終組み立てを担う。",
       "currency": "USD",
-      "price": 61.3,
-      "change_pct": 3.92,
-      "market_cap": 15230136344,
-      "date": "2026-08-17"
+      "price": 54.84,
+      "change_pct": -10.54,
+      "market_cap": 13625133602,
+      "date": "2026-08-18"
     },
     "ASX": {
       "name": "ASE Technology",
@@ -240,10 +240,10 @@
       "listed": true,
       "description": "後工程（OSAT）世界最大手。TSMC等と連携し、HBMを含む最先端AI半導体の2.5D/3Dパッケージングを供給。",
       "currency": "USD",
-      "price": 39.91,
-      "change_pct": 0.94,
-      "market_cap": 103912285277,
-      "date": "2026-08-17"
+      "price": 36.41,
+      "change_pct": -8.77,
+      "market_cap": 94799456416,
+      "date": "2026-08-18"
     },
     "000660.KS": {
       "name": "SK Hynix",
@@ -254,7 +254,7 @@
       "currency": "KRW",
       "price": 1645000.0,
       "change_pct": 3.26,
-      "market_cap": 1167711295695000,
+      "market_cap": 1179778828842000,
       "date": "2026-08-14"
     },
     "MU": {
@@ -264,10 +264,10 @@
       "listed": true,
       "description": "米国のメモリ大手。最先端のHBM3Eや高密度DRAM、SSDを開発し、データセンターやAIサーバー向けに供給。",
       "currency": "USD",
-      "price": 1011.75,
-      "change_pct": 4.13,
-      "market_cap": 1142663520524,
-      "date": "2026-08-17"
+      "price": 940.76,
+      "change_pct": -7.02,
+      "market_cap": 1062487911763,
+      "date": "2026-08-18"
     },
     "005930.KS": {
       "name": "Samsung Electronics",
@@ -278,7 +278,7 @@
       "currency": "KRW",
       "price": 274500.0,
       "change_pct": 2.43,
-      "market_cap": 1802521572597000,
+      "market_cap": 1763122193961000,
       "date": "2026-08-14"
     },
     "285A.T": {
@@ -288,10 +288,10 @@
       "listed": true,
       "description": "NAND型フラッシュメモリ大手。AIの学習データ保存を支える大容量・高性能SSDをインフラ向けに供給。",
       "currency": "JPY",
-      "price": 53740.0,
-      "change_pct": 3.75,
-      "market_cap": 33841475396080,
-      "date": "2026-08-14"
+      "price": 61840.0,
+      "change_pct": 15.07,
+      "market_cap": 31274908132050,
+      "date": "2026-08-17"
     },
     "SNDK": {
       "name": "SanDisk",
@@ -300,10 +300,10 @@
       "listed": true,
       "description": "フラッシュメモリ専業（WDCから分離独立）。AIデータレイクやエッジデバイス向けの高速ストレージ製品を供給。",
       "currency": "USD",
-      "price": 1786.85,
-      "change_pct": 8.88,
-      "market_cap": 264614180466,
-      "date": "2026-08-17"
+      "price": 1625.78,
+      "change_pct": -9.01,
+      "market_cap": 240761371099,
+      "date": "2026-08-18"
     },
     "ASML": {
       "name": "ASML",
@@ -312,10 +312,10 @@
       "listed": true,
       "description": "露光装置世界首位。最先端AI半導体の微細化に不可欠な極端紫外線（EUV）露光装置を独占供給。",
       "currency": "USD",
-      "price": 1883.12,
-      "change_pct": 2.12,
-      "market_cap": 723306390124,
-      "date": "2026-08-17"
+      "price": 1802.98,
+      "change_pct": -4.26,
+      "market_cap": 692524610498,
+      "date": "2026-08-18"
     },
     "AMAT": {
       "name": "Applied Materials",
@@ -324,10 +324,10 @@
       "listed": true,
       "description": "半導体製造装置で世界最大級。成膜やイオン注入など広範なプロセス装置をロジック・メモリ製造に供給。",
       "currency": "USD",
-      "price": 535.31,
-      "change_pct": 5.55,
-      "market_cap": 425014420534,
-      "date": "2026-08-17"
+      "price": 514.33,
+      "change_pct": -3.92,
+      "market_cap": 408357167200,
+      "date": "2026-08-18"
     },
     "LRCX": {
       "name": "Lam Research",
@@ -336,10 +336,10 @@
       "listed": true,
       "description": "エッチング（微細加工）装置大手。AI半導体やHBMの3次元構造化に必須の精密加工装置を供給。",
       "currency": "USD",
-      "price": 343.84,
-      "change_pct": 3.45,
-      "market_cap": 430254208057,
-      "date": "2026-08-17"
+      "price": 327.92,
+      "change_pct": -4.63,
+      "market_cap": 410333199122,
+      "date": "2026-08-18"
     },
     "KLAC": {
       "name": "KLA",
@@ -348,10 +348,10 @@
       "listed": true,
       "description": "半導体検査・計測装置の世界的リーダー。製造プロセスの歩留まり向上のための欠陥検査システムをファウンドリ等へ供給。",
       "currency": "USD",
-      "price": 205.76,
-      "change_pct": 1.0,
-      "market_cap": 268835058893,
-      "date": "2026-08-17"
+      "price": 194.79,
+      "change_pct": -5.33,
+      "market_cap": 254502239088,
+      "date": "2026-08-18"
     },
     "8035.T": {
       "name": "東京エレクトロン",
@@ -360,10 +360,10 @@
       "listed": true,
       "description": "半導体製造装置の大手。塗布現像装置やエッチング装置で世界トップクラスのシェアを持つ。",
       "currency": "JPY",
-      "price": 59130.0,
-      "change_pct": -0.57,
-      "market_cap": 27319990367640,
-      "date": "2026-08-14"
+      "price": 60090.0,
+      "change_pct": 1.62,
+      "market_cap": 25613256741280,
+      "date": "2026-08-17"
     },
     "6857.T": {
       "name": "アドバンテスト",
@@ -372,10 +372,10 @@
       "listed": true,
       "description": "半導体検査装置（テスタ）世界大手。複雑化するAI半導体や高帯域メモリ（HBM）向けの試験装置で高シェア。",
       "currency": "JPY",
-      "price": 36870.0,
-      "change_pct": 2.59,
-      "market_cap": 27356276533640,
-      "date": "2026-08-14"
+      "price": 37780.0,
+      "change_pct": 2.47,
+      "market_cap": 25901016454720,
+      "date": "2026-08-17"
     },
     "6146.T": {
       "name": "ディスコ",
@@ -384,10 +384,10 @@
       "listed": true,
       "description": "半導体切断・研削装置で世界首位。HBMの極薄化やAIチップの切り出しに不可欠な精密加工装置を供給。",
       "currency": "JPY",
-      "price": 65470.0,
-      "change_pct": -0.55,
-      "market_cap": 7149107754750,
-      "date": "2026-08-14"
+      "price": 65910.0,
+      "change_pct": 0.67,
+      "market_cap": 6762962653750,
+      "date": "2026-08-17"
     },
     "4004.T": {
       "name": "レゾナック",
@@ -396,10 +396,10 @@
       "listed": true,
       "description": "半導体材料大手。AI半導体の先端パッケージングに必須な高性能封止材や熱制御材料で高い世界シェアを持つ。",
       "currency": "JPY",
-      "price": 16465.0,
-      "change_pct": -3.15,
-      "market_cap": 3262960228000,
-      "date": "2026-08-14"
+      "price": 17200.0,
+      "change_pct": 4.46,
+      "market_cap": 3220276155250,
+      "date": "2026-08-17"
     },
     "4062.T": {
       "name": "イビデン",
@@ -408,10 +408,10 @@
       "listed": true,
       "description": "電子部品大手。最先端AI半導体を実装するための高性能プラスチックパッケージ基板（ICパッケージ）を供給。",
       "currency": "JPY",
-      "price": 20785.0,
-      "change_pct": -3.59,
-      "market_cap": 6030928956780,
-      "date": "2026-08-14"
+      "price": 21580.0,
+      "change_pct": 3.82,
+      "market_cap": 5833903705875,
+      "date": "2026-08-17"
     },
     "4063.T": {
       "name": "信越化学",
@@ -420,10 +420,10 @@
       "listed": true,
       "description": "半導体シリコンウエハで世界首位。フォトレジストなど前工程に不可欠な高純度材料を製造企業へ広く供給。",
       "currency": "JPY",
-      "price": 6372.0,
-      "change_pct": -0.09,
-      "market_cap": 11810312765460,
-      "date": "2026-08-14"
+      "price": 6385.0,
+      "change_pct": 0.2,
+      "market_cap": 11545806152232,
+      "date": "2026-08-17"
     },
     "7741.T": {
       "name": "HOYA",
@@ -432,10 +432,10 @@
       "listed": true,
       "description": "光学技術大手。最先端のEUV露光に対応した回路原版（マスクブランクス）で世界シェアの大部分を握る。",
       "currency": "JPY",
-      "price": 26645.0,
-      "change_pct": 0.32,
-      "market_cap": 8831341068000,
-      "date": "2026-08-14"
+      "price": 26400.0,
+      "change_pct": -0.92,
+      "market_cap": 8794543813550,
+      "date": "2026-08-17"
     },
     "6920.T": {
       "name": "レーザーテック",
@@ -444,10 +444,10 @@
       "listed": true,
       "description": "検査装置メーカー。EUV露光用のフォトマスク欠陥検査装置を独占供給し、最先端半導体の歩留まりを支える。",
       "currency": "JPY",
-      "price": 38820.0,
-      "change_pct": -4.12,
-      "market_cap": 3518899947160,
-      "date": "2026-08-14"
+      "price": 39260.0,
+      "change_pct": 1.13,
+      "market_cap": 3318127255320,
+      "date": "2026-08-17"
     },
     "7735.T": {
       "name": "SCREEN HD",
@@ -456,10 +456,10 @@
       "listed": true,
       "description": "半導体洗浄装置で世界首位。微細化が進むAI半導体の製造工程において、ウエハの不純物を取り除く装置を供給。",
       "currency": "JPY",
-      "price": 14275.0,
-      "change_pct": 0.99,
-      "market_cap": 2763518635450,
-      "date": "2026-08-14"
+      "price": 14615.0,
+      "change_pct": 2.38,
+      "market_cap": 2589561611670,
+      "date": "2026-08-17"
     },
     "6315.T": {
       "name": "TOWA",
@@ -468,10 +468,10 @@
       "listed": true,
       "description": "半導体成形装置大手。HBM（高帯域メモリ）の製造プロセスに不可欠なコンプレッション・モールディング装置で世界首位。",
       "currency": "JPY",
-      "price": 2512.0,
-      "change_pct": 0.68,
-      "market_cap": 191630869856,
-      "date": "2026-08-14"
+      "price": 2554.0,
+      "change_pct": 1.67,
+      "market_cap": 182326943520,
+      "date": "2026-08-17"
     },
     "6594.T": {
       "name": "ニデック",
@@ -480,10 +480,10 @@
       "listed": true,
       "description": "モーター世界大手。AIデータセンターの熱問題を解決する、高効率な水冷冷却システムやファンをサーバー向けに供給。",
       "currency": "JPY",
-      "price": 2772.0,
-      "change_pct": -0.22,
-      "market_cap": 3226862185525,
-      "date": "2026-08-14"
+      "price": 2815.0,
+      "change_pct": 1.55,
+      "market_cap": 3221130636350,
+      "date": "2026-08-17"
     },
     "6504.T": {
       "name": "富士電機",
@@ -492,10 +492,10 @@
       "listed": true,
       "description": "重電大手。AIデータセンターの安定稼働に不可欠な、大容量の不停電電源装置（UPS）や受配電設備を供給。",
       "currency": "JPY",
-      "price": 14900.0,
-      "change_pct": -0.47,
-      "market_cap": 2185487605320,
-      "date": "2026-08-14"
+      "price": 14970.0,
+      "change_pct": 0.47,
+      "market_cap": 2103732557960,
+      "date": "2026-08-17"
     },
     "5803.T": {
       "name": "フジクラ",
@@ -504,10 +504,10 @@
       "listed": true,
       "description": "電線・光ファイバー大手。データセンター向け超多芯光ケーブルで世界最高水準の実装密度を実現。",
       "currency": "JPY",
-      "price": 5665.0,
-      "change_pct": -1.65,
-      "market_cap": 10063348009758,
-      "date": "2026-08-14"
+      "price": 6078.0,
+      "change_pct": 7.29,
+      "market_cap": 9771944711022,
+      "date": "2026-08-17"
     },
     "5802.T": {
       "name": "住友電工",
@@ -516,10 +516,10 @@
       "listed": true,
       "description": "非鉄金属・電線大手。データセンター内の超高速通信を支える光ファイバーケーブルや光コネクタ、関連部品を供給。",
       "currency": "JPY",
-      "price": 2386.0,
-      "change_pct": 2.21,
-      "market_cap": 7714967403500,
-      "date": "2026-08-14"
+      "price": 2473.0,
+      "change_pct": 3.65,
+      "market_cap": 7548064550250,
+      "date": "2026-08-17"
     },
     "SMCI": {
       "name": "Supermicro",
@@ -528,10 +528,10 @@
       "listed": true,
       "description": "AIサーバー大手。NVIDIA製GPUを高密度に実装した水冷対応サーバーを、ハイパースケーラー等へ迅速に供給。",
       "currency": "USD",
-      "price": 38.28,
-      "change_pct": -3.92,
-      "market_cap": 24762298683,
-      "date": "2026-08-17"
+      "price": 37.41,
+      "change_pct": -2.27,
+      "market_cap": 24199519841,
+      "date": "2026-08-18"
     },
     "DELL": {
       "name": "Dell",
@@ -540,10 +540,10 @@
       "listed": true,
       "description": "ITインフラ大手。企業やハイパースケーラー向けに、最新のAI半導体を搭載した高性能サーバーやストレージシステムを供給。",
       "currency": "USD",
-      "price": 479.81,
-      "change_pct": -2.24,
-      "market_cap": 310025596801,
-      "date": "2026-08-17"
+      "price": 468.65,
+      "change_pct": -2.33,
+      "market_cap": 302814644938,
+      "date": "2026-08-18"
     },
     "GLW": {
       "name": "Corning",
@@ -552,10 +552,10 @@
       "listed": true,
       "description": "特殊ガラス大手。AIデータセンター内部の膨大なデータ通信を処理する、超高密度光ファイバーや接続ソリューションを供給。",
       "currency": "USD",
-      "price": 173.21,
-      "change_pct": 4.35,
-      "market_cap": 149201078595,
-      "date": "2026-08-17"
+      "price": 159.9,
+      "change_pct": -7.68,
+      "market_cap": 137456082970,
+      "date": "2026-08-18"
     },
     "VRT": {
       "name": "Vertiv",
@@ -564,10 +564,10 @@
       "listed": true,
       "description": "物理インフラ大手。AIサーバーの排熱を管理する液冷・空冷システムや、データセンター用の電力管理ソリューションを供給。",
       "currency": "USD",
-      "price": 292.43,
-      "change_pct": -0.48,
-      "market_cap": 112582088610,
-      "date": "2026-08-17"
+      "price": 272.54,
+      "change_pct": -6.8,
+      "market_cap": 104924679959,
+      "date": "2026-08-18"
     },
     "ALAB": {
       "name": "Astera Labs",
@@ -576,10 +576,10 @@
       "listed": true,
       "description": "接続半導体メーカー。AIサーバー内のGPUとメモリ、ネットワーク間のデータ転送ボトルネックを解消するICを供給。",
       "currency": "USD",
-      "price": 320.17,
-      "change_pct": -0.45,
-      "market_cap": 55544728077,
-      "date": "2026-08-17"
+      "price": 303.44,
+      "change_pct": -5.23,
+      "market_cap": 52642320381,
+      "date": "2026-08-18"
     },
     "ANET": {
       "name": "Arista Networks",
@@ -588,10 +588,10 @@
       "listed": true,
       "description": "ネットワーク機器大手。AIクラスター内の膨大な通信を低遅延で処理する高速イーサネットスイッチを供給。",
       "currency": "USD",
-      "price": 201.8,
-      "change_pct": 1.5,
-      "market_cap": 254515137815,
-      "date": "2026-08-17"
+      "price": 193.18,
+      "change_pct": -4.27,
+      "market_cap": 243643368263,
+      "date": "2026-08-18"
     },
     "WDC": {
       "name": "Western Digital",
@@ -600,10 +600,10 @@
       "listed": true,
       "description": "ストレージ大手。AIの学習・推論に用いる大量のデータを保管する、DC向けの大容量ニアラインHDDを供給。",
       "currency": "USD",
-      "price": 536.01,
-      "change_pct": 5.35,
-      "market_cap": 184753072403,
-      "date": "2026-08-17"
+      "price": 496.16,
+      "change_pct": -7.43,
+      "market_cap": 178885996095,
+      "date": "2026-08-18"
     },
     "9984.T": {
       "name": "ソフトバンクG",
@@ -612,10 +612,10 @@
       "listed": true,
       "description": "投資会社・通信キャリア。傘下にArm（チップ設計IP）を持ち、AI分野ではStargateプロジェクトを主導。",
       "currency": "JPY",
-      "price": 5739.0,
-      "change_pct": 2.94,
-      "market_cap": 33543864904086,
-      "date": "2026-08-14"
+      "price": 5886.0,
+      "change_pct": 2.56,
+      "market_cap": 33224725176830,
+      "date": "2026-08-17"
     },
     "AAPL": {
       "name": "Apple",
@@ -624,10 +624,10 @@
       "listed": true,
       "description": "スマホ・IT大手。独自AI「Apple Intelligence」を展開し、高性能な自社製SoCを搭載したエッジ端末を通じてAIを普及。",
       "currency": "USD",
-      "price": 305.59,
-      "change_pct": -0.11,
-      "market_cap": 4459835412754,
-      "date": "2026-08-17"
+      "price": 310.03,
+      "change_pct": 1.45,
+      "market_cap": 4524633607584,
+      "date": "2026-08-18"
     },
     "9432.T": {
       "name": "NTT",
@@ -636,10 +636,10 @@
       "listed": true,
       "description": "通信最大手。超低消費電力・低遅延の光ネットワーク技術「IOWN」を推進し、分散型AIデータセンター基盤を構築。",
       "currency": "JPY",
-      "price": 162.7,
-      "change_pct": 1.37,
-      "market_cap": 13114285777465,
-      "date": "2026-08-14"
+      "price": 161.5,
+      "change_pct": -0.74,
+      "market_cap": 13024962468764,
+      "date": "2026-08-17"
     },
     "7203.T": {
       "name": "トヨタ",
@@ -648,10 +648,10 @@
       "listed": true,
       "description": "自動車世界大手。自動運転技術やモビリティ分野において、完成された生成AIモデルをフィジカルな車両に実装・統合。",
       "currency": "JPY",
-      "price": 3020.0,
-      "change_pct": 1.17,
-      "market_cap": 35677091122240,
-      "date": "2026-08-14"
+      "price": 3013.0,
+      "change_pct": -0.23,
+      "market_cap": 35783660594560,
+      "date": "2026-08-17"
     },
     "6758.T": {
       "name": "ソニー",
@@ -660,10 +660,10 @@
       "listed": true,
       "description": "エンタメ・半導体大手。世界首位のイメージセンサーにAI処理機能を組み込み、高度なエッジAIソリューションを展開。",
       "currency": "JPY",
-      "price": 3912.0,
-      "change_pct": 5.73,
-      "market_cap": 22127386207500,
-      "date": "2026-08-14"
+      "price": 3780.0,
+      "change_pct": -3.37,
+      "market_cap": 21764450243250,
+      "date": "2026-08-17"
     },
     "TSLA": {
       "name": "Tesla",
@@ -672,10 +672,10 @@
       "listed": true,
       "description": "EV・AI企業。自動運転チップを自社設計し、大規模計算インフラを運用。人型ロボット「Optimus」などフィジカルAIを主導。",
       "currency": "USD",
-      "price": 339.3,
-      "change_pct": -0.87,
-      "market_cap": 1340081382571,
-      "date": "2026-08-17"
+      "price": 336.87,
+      "change_pct": -0.72,
+      "market_cap": 1330484011331,
+      "date": "2026-08-18"
     }
   },
   "islands": [
@@ -1263,18 +1263,18 @@
     "total_companies": 56,
     "listed": 54,
     "unlisted": 2,
-    "up_count": 27,
-    "down_count": 27,
+    "up_count": 20,
+    "down_count": 34,
     "unchanged_count": 0,
     "top_gainer": {
-      "name": "SanDisk",
-      "ticker": "SNDK",
-      "change_pct": 8.88
+      "name": "キオクシア",
+      "ticker": "285A.T",
+      "change_pct": 15.07
     },
     "top_loser": {
-      "name": "レーザーテック",
-      "ticker": "6920.T",
-      "change_pct": -4.12
+      "name": "CoreWeave",
+      "ticker": "CRWV",
+      "change_pct": -12.1
     }
   }
 }
