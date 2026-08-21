@@ -329,6 +329,37 @@ def _chg_html(chg):
     return f"±{abs(chg):.2f}%", "color:var(--flat)"
 
 
+def _replace_by_id(content, elem_id, new_inner):
+    """id="X">... の直後(次の '<' まで)を new_inner に置換する。"""
+    pattern = re.compile(r'(id="' + re.escape(elem_id) + r'"[^>]*>)[^<]*')
+    if not pattern.search(content):
+        print(f"[bake] id={elem_id} が見つかりません")
+        return content
+    return pattern.sub(lambda m: m.group(1) + new_inner, content, count=1)
+
+
+def _mover_html(mover):
+    """renderTodaySummary()(index.html内JS)の mover() と同一。"""
+    if not mover or mover.get("change_pct") is None:
+        return "—"
+    disp = mover.get("ticker") or mover.get("name") or "—"
+    chg = mover["change_pct"]
+    mark = "▲" if chg > 0 else "▼" if chg < 0 else "–"
+    cls = "up" if chg > 0 else "down" if chg < 0 else "flat"
+    return f'{disp} <span class="{cls}">{mark}{abs(chg):.2f}%</span>'
+
+
+def _build_summary_html(summary):
+    """renderTodaySummary()(index.html内JS)と同一構造の静的HTML。"""
+    up = summary.get("up_count", 0)
+    down = summary.get("down_count", 0)
+    return f"""<div class="ts-card">
+    <span><b class="up">{up}</b>社が前日比上昇 ／ <b class="down">{down}</b>社が前日比下落</span>
+    <span>最高上昇 <b>{_mover_html(summary.get("top_gainer"))}</b></span>
+    <span>最大下落 <b>{_mover_html(summary.get("top_loser"))}</b></span>
+  </div>"""
+
+
 def bake_index_html(data, index_path, config):
     if not index_path.exists():
         print("[bake] index.html が見つかりません。スキップ。")
@@ -397,6 +428,21 @@ def bake_index_html(data, index_path, config):
     inner = "\n" + "".join(parts)
     content = index_path.read_text(encoding="utf-8")
     content = _replace_between(content, "<!--STOCK_LIST_START-->", "<!--STOCK_LIST_END-->", inner)
+
+    summary = data.get("summary")
+    if summary:
+        content = _replace_between(content, "<!--SUMMARY_START-->", "<!--SUMMARY_END-->",
+                                    "\n" + _build_summary_html(summary) + "\n")
+
+    gen_at = (data.get("_meta") or {}).get("generated_at")
+    if gen_at:
+        try:
+            dt = datetime.fromisoformat(gen_at).astimezone(JST)
+            gen_str = dt.strftime("%Y/%m/%d %H:%M") + " JST"
+        except Exception:
+            gen_str = gen_at
+        content = _replace_by_id(content, "ph-generated", gen_str)
+
     index_path.write_text(content, encoding="utf-8")
     print("[bake] index.html 焼き込み完了")
 
