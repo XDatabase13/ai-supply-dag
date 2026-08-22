@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-08-22T07:30:56+09:00",
+    "generated_at": "2026-08-23T07:30:53+09:00",
     "status": "complete",
     "site_name": "生成AIサプライチェーンの有向グラフ"
   },
@@ -170,7 +170,7 @@
       "currency": "USD",
       "price": 90.07,
       "change_pct": -2.24,
-      "market_cap": 473275183588,
+      "market_cap": 476119499335,
       "date": "2026-08-21"
     },
     "MRVL": {
@@ -410,7 +410,7 @@
       "currency": "JPY",
       "price": 19190.0,
       "change_pct": 0.21,
-      "market_cap": 5362999382790,
+      "market_cap": 5394225542690,
       "date": "2026-08-21"
     },
     "4063.T": {
@@ -458,7 +458,7 @@
       "currency": "JPY",
       "price": 12970.0,
       "change_pct": -0.84,
-      "market_cap": 2452469155100,
+      "market_cap": 2452472734820,
       "date": "2026-08-21"
     },
     "6315.T": {
@@ -554,7 +554,7 @@
       "currency": "USD",
       "price": 149.84,
       "change_pct": -1.06,
-      "market_cap": 129070424362,
+      "market_cap": 128808128549,
       "date": "2026-08-21"
     },
     "VRT": {
