@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-09-05T07:30:56+09:00",
+    "generated_at": "2026-09-06T07:31:00+09:00",
     "status": "complete",
     "site_name": "生成AIサプライチェーンの有向グラフ"
   },
@@ -25,7 +25,7 @@
       "description": "検索大手。自社開発のAIモデル「Gemini」やカスタムチップ「TPU」を擁し、強力なAI基盤を提供。",
       "currency": "USD",
       "price": 338.46,
-      "change_pct": -1.17,
+      "change_pct": -1.11,
       "market_cap": 4139343638396,
       "date": "2026-09-04"
     },
@@ -144,9 +144,9 @@
       "listed": true,
       "description": "通信・半導体大手。ハイパースケーラー向けにカスタムAIシリコン（ASIC）の開発や高速ネットワーク接続を供給。",
       "currency": "USD",
-      "price": 357.895,
+      "price": 357.9,
       "change_pct": 0.21,
-      "market_cap": 1702714112694,
+      "market_cap": 1702737923826,
       "date": "2026-09-04"
     },
     "AMD": {
@@ -170,7 +170,7 @@
       "currency": "USD",
       "price": 95.8,
       "change_pct": 4.51,
-      "market_cap": 506408900231,
+      "market_cap": 503383637012,
       "date": "2026-09-04"
     },
     "MRVL": {
@@ -422,7 +422,7 @@
       "currency": "JPY",
       "price": 5786.0,
       "change_pct": -1.25,
-      "market_cap": 10702344504456,
+      "market_cap": 10501964417846,
       "date": "2026-09-04"
     },
     "7741.T": {
@@ -458,7 +458,7 @@
       "currency": "JPY",
       "price": 13030.0,
       "change_pct": 0.58,
-      "market_cap": 2463818021180,
+      "market_cap": 2463814424900,
       "date": "2026-09-04"
     },
     "6315.T": {
@@ -530,7 +530,7 @@
       "currency": "USD",
       "price": 39.59,
       "change_pct": 4.54,
-      "market_cap": 25609703237,
+      "market_cap": 26009259652,
       "date": "2026-09-04"
     },
     "DELL": {
@@ -554,7 +554,7 @@
       "currency": "USD",
       "price": 154.3,
       "change_pct": 5.68,
-      "market_cap": 132642119020,
+      "market_cap": 132912222102,
       "date": "2026-09-04"
     },
     "VRT": {
