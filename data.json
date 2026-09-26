@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-09-26T07:30:54+09:00",
+    "generated_at": "2026-09-27T07:30:58+09:00",
     "status": "complete",
     "site_name": "生成AIサプライチェーンの有向グラフ"
   },
@@ -170,7 +170,7 @@
       "currency": "USD",
       "price": 123.0,
       "change_pct": -3.45,
-      "market_cap": 646306736745,
+      "market_cap": 650190947226,
       "date": "2026-09-25"
     },
     "MRVL": {
@@ -180,9 +180,9 @@
       "listed": true,
       "description": "データインフラ半導体大手。AIデータセンター内部の高速通信用チップや、カスタムASIC設計プラットフォームを供給。",
       "currency": "USD",
-      "price": 261.935,
+      "price": 261.94,
       "change_pct": 1.15,
-      "market_cap": 235402190612,
+      "market_cap": 235406688523,
       "date": "2026-09-25"
     },
     "ARM": {
@@ -338,7 +338,7 @@
       "currency": "USD",
       "price": 315.21,
       "change_pct": 2.62,
-      "market_cap": 394428881717,
+      "market_cap": 394461462452,
       "date": "2026-09-25"
     },
     "KLAC": {
@@ -458,7 +458,7 @@
       "currency": "JPY",
       "price": 13740.0,
       "change_pct": 3.31,
-      "market_cap": 2598066784200,
+      "market_cap": 2598070576440,
       "date": "2026-09-25"
     },
     "6315.T": {
@@ -530,7 +530,7 @@
       "currency": "USD",
       "price": 43.26,
       "change_pct": 4.22,
-      "market_cap": 28420321409,
+      "market_cap": 27983726062,
       "date": "2026-09-25"
     },
     "DELL": {
@@ -554,7 +554,7 @@
       "currency": "USD",
       "price": 156.74,
       "change_pct": 1.68,
-      "market_cap": 135014011732,
+      "market_cap": 134739637412,
       "date": "2026-09-25"
     },
     "VRT": {
