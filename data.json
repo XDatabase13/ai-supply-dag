@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-04T07:30:54+09:00",
+    "generated_at": "2026-10-05T07:30:58+09:00",
     "status": "complete",
     "site_name": "生成AIサプライチェーンの有向グラフ"
   },
@@ -242,7 +242,7 @@
       "currency": "USD",
       "price": 47.45,
       "change_pct": 6.08,
-      "market_cap": 123543924694,
+      "market_cap": 104333803843,
       "date": "2026-10-02"
     },
     "000660.KS": {
@@ -254,7 +254,7 @@
       "currency": "KRW",
       "price": 1841000.0,
       "change_pct": 0.44,
-      "market_cap": 1306842854331000,
+      "market_cap": 1309089995500000,
       "date": "2026-10-02"
     },
     "MU": {
@@ -614,7 +614,7 @@
       "currency": "JPY",
       "price": 6310.0,
       "change_pct": -5.83,
-      "market_cap": 35960208553310,
+      "market_cap": 35961001644590,
       "date": "2026-10-02"
     },
     "AAPL": {
