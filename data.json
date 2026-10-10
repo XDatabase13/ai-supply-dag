@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-10T07:31:04+09:00",
+    "generated_at": "2026-10-11T07:31:04+09:00",
     "status": "complete",
     "site_name": "生成AIサプライチェーンの有向グラフ"
   },
@@ -73,7 +73,7 @@
       "description": "データベース大手。高速なクラウドインフラ（OCI）を展開し、大規模なGPUクラスターをAIモデル企業に供給。",
       "currency": "USD",
       "price": 141.4,
-      "change_pct": 4.21,
+      "change_pct": 4.59,
       "market_cap": 428654243965,
       "date": "2026-10-09"
     },
@@ -170,7 +170,7 @@
       "currency": "USD",
       "price": 104.7,
       "change_pct": -2.22,
-      "market_cap": 550148889144,
+      "market_cap": 553455204799,
       "date": "2026-10-09"
     },
     "MRVL": {
@@ -181,7 +181,7 @@
       "description": "データインフラ半導体大手。AIデータセンター内部の高速通信用チップや、カスタムASIC設計プラットフォームを供給。",
       "currency": "USD",
       "price": 275.28,
-      "change_pct": 0.23,
+      "change_pct": 0.25,
       "market_cap": 247395404769,
       "date": "2026-10-09"
     },
@@ -266,7 +266,7 @@
       "currency": "USD",
       "price": 1029.0,
       "change_pct": -0.66,
-      "market_cap": 1162145552379,
+      "market_cap": 1164234485148,
       "date": "2026-10-09"
     },
     "005930.KS": {
@@ -410,7 +410,7 @@
       "currency": "JPY",
       "price": 11515.0,
       "change_pct": -2.5,
-      "market_cap": 6532031441390,
+      "market_cap": 6475018880050,
       "date": "2026-10-09"
     },
     "4063.T": {
@@ -422,7 +422,7 @@
       "currency": "JPY",
       "price": 6085.0,
       "change_pct": -0.59,
-      "market_cap": 11044668766435,
+      "market_cap": 11048733589030,
       "date": "2026-10-09"
     },
     "7741.T": {
@@ -458,7 +458,7 @@
       "currency": "JPY",
       "price": 16545.0,
       "change_pct": 3.99,
-      "market_cap": 3128458147350,
+      "market_cap": 3128462713770,
       "date": "2026-10-09"
     },
     "6315.T": {
@@ -494,7 +494,7 @@
       "currency": "JPY",
       "price": 15015.0,
       "change_pct": 2.42,
-      "market_cap": 2192057207340,
+      "market_cap": 2192053979115,
       "date": "2026-10-09"
     },
     "5803.T": {
@@ -528,9 +528,9 @@
       "listed": true,
       "description": "AIサーバー大手。NVIDIA製GPUを高密度に実装した水冷対応サーバーを、ハイパースケーラー等へ迅速に供給。",
       "currency": "USD",
-      "price": 41.855,
-      "change_pct": -2.14,
-      "market_cap": 27497285846,
+      "price": 41.86,
+      "change_pct": -2.13,
+      "market_cap": 27078105305,
       "date": "2026-10-09"
     },
     "DELL": {
@@ -554,7 +554,7 @@
       "currency": "USD",
       "price": 156.68,
       "change_pct": 2.52,
-      "market_cap": 134962317392,
+      "market_cap": 134688048124,
       "date": "2026-10-09"
     },
     "VRT": {
