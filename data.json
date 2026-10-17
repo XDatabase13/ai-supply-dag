@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-17T07:30:59+09:00",
+    "generated_at": "2026-10-18T07:31:08+09:00",
     "status": "complete",
     "site_name": "生成AIサプライチェーンの有向グラフ"
   },
@@ -96,9 +96,9 @@
       "listed": true,
       "description": "SNS大手。オープンソースのAIモデル「Llama」を開発しつつ、膨大なGPUからなる巨大なインフラを自社運用。",
       "currency": "USD",
-      "price": 709.325,
+      "price": 709.33,
       "change_pct": -3.72,
-      "market_cap": 1807009884145,
+      "market_cap": 1807022634115,
       "date": "2026-10-16"
     },
     "SNPS": {
@@ -170,7 +170,7 @@
       "currency": "USD",
       "price": 89.85,
       "change_pct": -5.79,
-      "market_cap": 472119181384,
+      "market_cap": 474956549724,
       "date": "2026-10-16"
     },
     "MRVL": {
@@ -314,7 +314,7 @@
       "currency": "USD",
       "price": 1641.52,
       "change_pct": -0.96,
-      "market_cap": 630507839501,
+      "market_cap": 632670939375,
       "date": "2026-10-16"
     },
     "AMAT": {
@@ -458,7 +458,7 @@
       "currency": "JPY",
       "price": 13815.0,
       "change_pct": 1.84,
-      "market_cap": 2612248371450,
+      "market_cap": 2612252184390,
       "date": "2026-10-16"
     },
     "6315.T": {
@@ -530,7 +530,7 @@
       "currency": "USD",
       "price": 31.63,
       "change_pct": -9.86,
-      "market_cap": 20779814544,
+      "market_cap": 20460593301,
       "date": "2026-10-16"
     },
     "DELL": {
@@ -554,7 +554,7 @@
       "currency": "USD",
       "price": 132.0,
       "change_pct": -4.64,
-      "market_cap": 113703259692,
+      "market_cap": 113472192900,
       "date": "2026-10-16"
     },
     "VRT": {
