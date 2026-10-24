@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-24T07:31:05+09:00",
+    "generated_at": "2026-10-25T07:30:58+09:00",
     "status": "complete",
     "site_name": "生成AIサプライチェーンの有向グラフ"
   },
@@ -290,7 +290,7 @@
       "currency": "JPY",
       "price": 12755.0,
       "change_pct": 1.27,
-      "market_cap": 6793761695390,
+      "market_cap": 20381285086170,
       "date": "2026-10-23"
     },
     "SNDK": {
@@ -362,7 +362,7 @@
       "currency": "JPY",
       "price": 9458.0,
       "change_pct": 0.08,
-      "market_cap": 4293624255596,
+      "market_cap": 21483698320240,
       "date": "2026-10-23"
     },
     "6857.T": {
@@ -410,7 +410,7 @@
       "currency": "JPY",
       "price": 8512.0,
       "change_pct": -1.0,
-      "market_cap": 4812668695296,
+      "market_cap": 4829072434368,
       "date": "2026-10-23"
     },
     "4063.T": {
@@ -434,7 +434,7 @@
       "currency": "JPY",
       "price": 26100.0,
       "change_pct": -1.06,
-      "market_cap": 8705963997900,
+      "market_cap": 8679321117900,
       "date": "2026-10-23"
     },
     "6920.T": {
@@ -624,9 +624,9 @@
       "listed": true,
       "description": "スマホ・IT大手。独自AI「Apple Intelligence」を展開し、高性能な自社製SoCを搭載したエッジ端末を通じてAIを普及。",
       "currency": "USD",
-      "price": 347.725,
+      "price": 347.73,
       "change_pct": -0.14,
-      "market_cap": 5074761329575,
+      "market_cap": 5074834371736,
       "date": "2026-10-23"
     },
     "9432.T": {
