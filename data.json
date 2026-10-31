@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-10-31T07:31:04+09:00",
+    "generated_at": "2026-11-01T07:31:05+09:00",
     "status": "complete",
     "site_name": "生成AIサプライチェーンの有向グラフ"
   },
@@ -170,7 +170,7 @@
       "currency": "USD",
       "price": 65.76,
       "change_pct": -28.58,
-      "market_cap": 349185611343,
+      "market_cap": 349514411354,
       "date": "2026-10-30"
     },
     "MRVL": {
@@ -302,7 +302,7 @@
       "currency": "USD",
       "price": 1150.89,
       "change_pct": -13.47,
-      "market_cap": 166335330249,
+      "market_cap": 163759409369,
       "date": "2026-10-30"
     },
     "ASML": {
