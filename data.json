@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-01T07:31:05+09:00",
+    "generated_at": "2026-11-02T07:31:05+09:00",
     "status": "complete",
     "site_name": "生成AIサプライチェーンの有向グラフ"
   },
@@ -62,7 +62,7 @@
       "currency": "USD",
       "price": 240.35,
       "change_pct": -1.41,
-      "market_cap": 2598423915985,
+      "market_cap": 2598937857845,
       "date": "2026-10-30"
     },
     "ORCL": {
@@ -350,7 +350,7 @@
       "currency": "USD",
       "price": 157.91,
       "change_pct": -5.69,
-      "market_cap": 206073579930,
+      "market_cap": 205750802882,
       "date": "2026-10-30"
     },
     "8035.T": {
