@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-07T07:30:59+09:00",
+    "generated_at": "2026-11-08T07:30:57+09:00",
     "status": "complete",
     "site_name": "生成AIサプライチェーンの有向グラフ"
   },
@@ -206,7 +206,7 @@
       "currency": "USD",
       "price": 165.41,
       "change_pct": 5.52,
-      "market_cap": 176631336763,
+      "market_cap": 176988703918,
       "date": "2026-11-06"
     },
     "TSM": {
@@ -324,9 +324,9 @@
       "listed": true,
       "description": "半導体製造装置で世界最大級。成膜やイオン注入など広範なプロセス装置をロジック・メモリ製造に供給。",
       "currency": "USD",
-      "price": 332.715,
+      "price": 332.72,
       "change_pct": 4.22,
-      "market_cap": 264041770341,
+      "market_cap": 264045742203,
       "date": "2026-11-06"
     },
     "LRCX": {
@@ -530,7 +530,7 @@
       "currency": "USD",
       "price": 28.76,
       "change_pct": 6.2,
-      "market_cap": 18604068404,
+      "market_cap": 18959379225,
       "date": "2026-11-06"
     },
     "DELL": {
@@ -650,7 +650,7 @@
       "currency": "JPY",
       "price": 3338.0,
       "change_pct": -5.52,
-      "market_cap": 39315182682394,
+      "market_cap": 39315789530794,
       "date": "2026-11-06"
     },
     "6758.T": {
