@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-08T07:30:57+09:00",
+    "generated_at": "2026-11-09T07:31:26+09:00",
     "status": "complete",
     "site_name": "生成AIサプライチェーンの有向グラフ"
   },
@@ -290,7 +290,7 @@
       "currency": "JPY",
       "price": 8511.0,
       "change_pct": -8.72,
-      "market_cap": 13599773999874,
+      "market_cap": 13602068905914,
       "date": "2026-11-06"
     },
     "SNDK": {
@@ -422,7 +422,7 @@
       "currency": "JPY",
       "price": 5312.0,
       "change_pct": -6.69,
-      "market_cap": 9645172198016,
+      "market_cap": 9645278438016,
       "date": "2026-11-06"
     },
     "7741.T": {
@@ -458,7 +458,7 @@
       "currency": "JPY",
       "price": 7778.0,
       "change_pct": 0.19,
-      "market_cap": 1470727288468,
+      "market_cap": 1470725141740,
       "date": "2026-11-06"
     },
     "6315.T": {
@@ -638,7 +638,7 @@
       "currency": "JPY",
       "price": 160.2,
       "change_pct": -2.85,
-      "market_cap": 12940230797869,
+      "market_cap": 12938538365001,
       "date": "2026-11-06"
     },
     "7203.T": {
@@ -662,7 +662,7 @@
       "currency": "JPY",
       "price": 4142.0,
       "change_pct": -1.64,
-      "market_cap": 24188642016024,
+      "market_cap": 24140627537824,
       "date": "2026-11-06"
     },
     "TSLA": {
