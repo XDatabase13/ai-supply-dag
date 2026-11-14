@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-14T07:31:06+09:00",
+    "generated_at": "2026-11-15T07:31:02+09:00",
     "status": "complete",
     "site_name": "生成AIサプライチェーンの有向グラフ"
   },
@@ -98,7 +98,7 @@
       "currency": "USD",
       "price": 641.69,
       "change_pct": 2.9,
-      "market_cap": 1640694195829,
+      "market_cap": 1640314455878,
       "date": "2026-11-13"
     },
     "SNPS": {
@@ -362,7 +362,7 @@
       "currency": "JPY",
       "price": 9461.0,
       "change_pct": 1.69,
-      "market_cap": 21415434818360,
+      "market_cap": 21415633783190,
       "date": "2026-11-13"
     },
     "6857.T": {
@@ -458,7 +458,7 @@
       "currency": "JPY",
       "price": 8564.0,
       "change_pct": -0.64,
-      "market_cap": 1619348176120,
+      "market_cap": 1621115092036,
       "date": "2026-11-13"
     },
     "6315.T": {
@@ -528,9 +528,9 @@
       "listed": true,
       "description": "AIサーバー大手。NVIDIA製GPUを高密度に実装した水冷対応サーバーを、ハイパースケーラー等へ迅速に供給。",
       "currency": "USD",
-      "price": 26.865,
-      "change_pct": -0.46,
-      "market_cap": 17710143063,
+      "price": 26.87,
+      "change_pct": -0.44,
+      "market_cap": 17713439904,
       "date": "2026-11-13"
     },
     "DELL": {
@@ -553,7 +553,7 @@
       "description": "特殊ガラス大手。AIデータセンター内部の膨大なデータ通信を処理する、超高密度光ファイバーや接続ソリューションを供給。",
       "currency": "USD",
       "price": 114.08,
-      "change_pct": -4.54,
+      "change_pct": -4.31,
       "market_cap": 98268639749,
       "date": "2026-11-13"
     },
@@ -650,7 +650,7 @@
       "currency": "JPY",
       "price": 3418.0,
       "change_pct": 0.29,
-      "market_cap": 40258049315834,
+      "market_cap": 40113813325242,
       "date": "2026-11-13"
     },
     "6758.T": {
