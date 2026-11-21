@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "generated_at": "2026-11-21T07:31:08+09:00",
+    "generated_at": "2026-11-22T07:30:59+09:00",
     "status": "complete",
     "site_name": "生成AIサプライチェーンの有向グラフ"
   },
@@ -300,10 +300,10 @@
       "listed": true,
       "description": "フラッシュメモリ専業（WDCから分離独立）。AIデータレイクやエッジデバイス向けの高速ストレージ製品を供給。",
       "currency": "USD",
-      "price": 79.24,
-      "change_pct": -16.05,
-      "market_cap": 90200071829,
-      "date": "2026-11-20"
+      "price": 94.395,
+      "change_pct": -2.71,
+      "market_cap": 90200074260,
+      "date": "2026-11-19"
     },
     "ASML": {
       "name": "ASML",
@@ -600,10 +600,10 @@
       "listed": true,
       "description": "ストレージ大手。AIの学習・推論に用いる大量のデータを保管する、DC向けの大容量ニアラインHDDを供給。",
       "currency": "USD",
-      "price": 296.78,
-      "change_pct": 2.98,
+      "price": 261.11,
+      "change_pct": -12.02,
       "market_cap": 97739543285,
-      "date": "2026-11-19"
+      "date": "2026-11-20"
     },
     "9984.T": {
       "name": "ソフトバンクG",
@@ -1263,18 +1263,18 @@
     "total_companies": 56,
     "listed": 54,
     "unlisted": 2,
-    "up_count": 1,
-    "down_count": 53,
+    "up_count": 0,
+    "down_count": 54,
     "unchanged_count": 0,
     "top_gainer": {
-      "name": "Western Digital",
-      "ticker": "WDC",
-      "change_pct": 2.98
+      "name": "NTT",
+      "ticker": "9432.T",
+      "change_pct": -0.71
     },
     "top_loser": {
-      "name": "SanDisk",
-      "ticker": "SNDK",
-      "change_pct": -16.05
+      "name": "Astera Labs",
+      "ticker": "ALAB",
+      "change_pct": -14.77
     }
   }
 }
